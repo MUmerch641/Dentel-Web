@@ -22,7 +22,7 @@ export default function AdminDashboardLayout({
     <AuthGuard>
       <div className="min-h-screen bg-gray-100 flex flex-col">
         <header className="bg-blue-600 text-white p-4 shadow-md flex justify-between items-center">
-          <h1 className="text-xl font-bold">Admin Dashboard</h1>
+          <h1 className="text-xl font-bold">Welcome Dr Ramsha</h1>
           <nav>
             <button
               onClick={handleLogout}
