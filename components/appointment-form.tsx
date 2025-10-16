@@ -8,50 +8,82 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = React.useState<"idle" | "loading" | "success" | "error">("idle")
   const [message, setMessage] = React.useState<string>("")
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const form = e.currentTarget
-    const formData = new FormData(form)
+ async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  e.preventDefault()
 
-    const name = String(formData.get("name") || "").trim()
-    const phone = String(formData.get("phone") || "").trim()
-    const date = String(formData.get("date") || "").trim()
+  const form = e.currentTarget
+  const formData = new FormData(form)
 
-    if (!name || !phone) {
-      setStatus("error")
-      setMessage("Please fill in your name and phone.")
-      return
-    }
+  const name = String(formData.get("name") || "").trim()
+  const phone = String(formData.get("phone") || "").trim()
+  const date = String(formData.get("date") || "").trim()
 
-    if (!date) {
-      setStatus("error")
-      setMessage("Please select a preferred date.")
-      return
-    }
-
-    setStatus("loading")
-    setMessage("Booking your appointment...")
-
-    // 🐛 The correct code MUST use .from('appointments').insert
-    const { error } = await supabase.from('Appointments').insert([
-      {
-        patient_name: name,
-        patient_contact: phone,
-        scheduled_time: date,
-        status: 'Confirmed',
-      },
-    ]);
-
-    if (error) {
-      console.error('Error booking appointment:', error)
-      setStatus("error")
-      setMessage("Failed to book appointment. Please try again or call us directly.")
-    } else {
-      setStatus("success")
-      setMessage("Appointment booked successfully! We'll contact you to confirm.")
-      form.reset()
-    }
+  // 🧩 Validate input
+  if (!name || !phone) {
+    setStatus("error")
+    setMessage("Please fill in your name and phone.")
+    return
   }
+
+  if (!date) {
+    setStatus("error")
+    setMessage("Please select a preferred date.")
+    return
+  }
+
+  setStatus("loading")
+  setMessage("Booking your appointment...")
+
+  try {
+    // 💾 Insert into Supabase
+    const { error } = await supabase
+      .from("Appointments")
+      .insert([
+        {
+          patient_name: name,
+          patient_contact: phone,
+          scheduled_time: date,
+          status: "Confirmed",
+        },
+      ])
+      .select()
+
+    if (error) throw error
+
+    // 📧 Send email notification via Formspree
+    const emailData = {
+      patient_name: name,
+      patient_contact: phone,
+      scheduled_time: new Date(date).toLocaleString(),
+      message:
+        "A new appointment has been booked. Please check your admin dashboard for details and to start the call.",
+    }
+
+    const response = await fetch("https://formspree.io/f/xqaywrbp", {
+      method: "POST",
+      body: JSON.stringify(emailData),
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+
+    if (!response.ok) {
+      console.warn("⚠️ Appointment booked, but Formspree email failed to send.")
+    }
+
+    // ✅ Success
+    setStatus("success")
+    setMessage("Appointment booked successfully! We'll contact you to confirm.")
+    form.reset()
+
+  } catch (err) {
+    console.error("Error booking appointment:", err)
+    setStatus("error")
+    setMessage("Failed to book appointment. Please try again or call us directly.")
+  }
+}
+
 
   return (
     <form onSubmit={onSubmit} className="grid grid-cols-1 gap-3">

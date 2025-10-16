@@ -4,6 +4,7 @@ import { Button } from "@/components/button"
 import { ServiceCard } from "@/components/service-card"
 import { TestimonialCard } from "@/components/testimonial-card"
 import { AppointmentForm } from "@/components/appointment-form"
+import ServicesModal from "@/components/services-modal"
 import { services } from "@/data/services"
 import { testimonials } from "@/data/testimonials"
 import Link from "next/link"
@@ -26,7 +27,7 @@ export default function HomePage() {
                   Experience expert treatment, advanced technology, and a warm, supportive environment.
                 </p>
                 <div className="mt-6 flex gap-3">
-                  <Link href="/contact">
+                  <Link href="#appointment">
                     <Button size="lg" variant="primary">
                       Book Appointment
                     </Button>
@@ -107,10 +108,12 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-        </section>
+        </section>  
 
         {/* Appointment Form */}
-        <section className="py-12 md:py-16">
+        <section 
+          id="appointment"
+         className="py-12 md:py-16">
           <div className="mx-auto max-w-6xl px-4">
             <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
               <div>
@@ -135,6 +138,7 @@ export default function HomePage() {
       </main>
 
       <Footer />
+      <ServicesModal />
     </>
   )
 }

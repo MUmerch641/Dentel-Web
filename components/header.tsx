@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "./button"
 import { cn } from "@/lib/utils"
@@ -12,7 +13,6 @@ const nav = [
   { href: "/gallery", label: "Gallery" },
   { href: "/testimonials", label: "Testimonials" },
   { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
 ]
 
 export function Header() {
@@ -20,9 +20,18 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:py-4">
-        <Link href="/" className="flex items-center gap-2" aria-label="Dental Clinic Home">
-          <div className="h-9 w-9 rounded-md bg-primary" aria-hidden="true" />
-          <span className="text-lg font-semibold text-foreground">Dental Aesthetics</span>
+        <Link href="/" className="flex items-center gap-3" aria-label="Dental Clinic Home">
+          <Image 
+            src="/clinic-logo.png" 
+            alt="Dental Care & Implant Clinic Rahim Yar Khan Logo" 
+            width={48}
+            height={48}
+            className="h-12 w-auto"
+          />
+          <div className="flex flex-col">
+            <span className="text-lg font-bold text-foreground leading-tight">DENTAL CARE & IMPLANT CLINIC</span>
+            <span className="text-sm font-medium text-foreground/70">RAHIM YAR KHAN</span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
@@ -41,7 +50,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Link href="/contact">
+          <Link href="#appointment">
             <Button variant="secondary" size="sm">
               Book Appointment
             </Button>
