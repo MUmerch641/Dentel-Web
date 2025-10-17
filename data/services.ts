@@ -1,23 +1,11 @@
 import type React from "react"
-import {
-  FiSmile,
-  FiActivity,
-  FiAperture,
-  FiFeather,
-  FiGrid,
-  FiShield,
-  FiStar,
-  FiSun,
-  FiTarget,
-  FiTool,
-  FiZap,
-  FiHeart,
-} from "react-icons/fi"
+import { Smile, Stethoscope, Shield, Sparkles, Target, Circle, Cross, Baby, Palette, Activity, Plus, Link2 } from "lucide-react";
+
 
 export type Service = {
   slug: string
   title: string
-  excerpt: string
+  excerpt: string 
   icon: React.ComponentType<any>
   details: {
     description: string
@@ -32,7 +20,7 @@ export const services: Service[] = [
     slug: "root-canal-treatment",
     title: "Root Canal Treatment",
     excerpt: "Relieve pain and save your natural tooth with gentle, precise endodontic care.",
-    icon: FiTool,
+    icon: Stethoscope,
     details: {
       description:
         "Root canal therapy removes infected pulp, cleans the canals, and seals the tooth to relieve pain and prevent reinfection.",
@@ -52,7 +40,7 @@ export const services: Service[] = [
     slug: "teeth-whitening",
     title: "Teeth Whitening",
     excerpt: "Brighten your smile safely with professional-grade whitening solutions.",
-    icon: FiSun,
+    icon: Sparkles,
     details: {
       description:
         "In-office or take-home whitening treatments remove stains and lift shades effectively under professional supervision.",
@@ -68,7 +56,7 @@ export const services: Service[] = [
     slug: "dental-implants",
     title: "Dental Implants",
     excerpt: "Permanent, natural-looking replacement for missing teeth.",
-    icon: FiTarget,
+    icon: Target,
     details: {
       description:
         "Implants replace tooth roots with titanium posts topped by crowns for a stable, long-term solution.",
@@ -84,7 +72,7 @@ export const services: Service[] = [
     slug: "clear-aligners",
     title: "Clear Aligners",
     excerpt: "Discreet orthodontic treatment to straighten teeth comfortably.",
-    icon: FiFeather,
+    icon: Circle,
     details: {
       description: "A series of custom trays gently shift teeth into alignment.",
       advantages: ["Nearly invisible", "Removable", "Comfortable"],
@@ -99,7 +87,7 @@ export const services: Service[] = [
     slug: "veneers",
     title: "Veneers",
     excerpt: "Transform shape, color, and symmetry with ultra-thin porcelain shells.",
-    icon: FiAperture,
+    icon: Palette,
     details: {
       description: "Custom veneers bond to the front of teeth for cosmetic enhancement.",
       advantages: ["Immediate transformation", "Stain-resistant", "Durable"],
@@ -114,7 +102,7 @@ export const services: Service[] = [
     slug: "dental-crowns",
     title: "Dental Crowns",
     excerpt: "Restore strength and appearance to damaged teeth.",
-    icon: FiShield,
+    icon: Shield,
     details: {
       description: "Crowns cover and protect compromised teeth, restoring function and aesthetics.",
       advantages: ["Strengthens tooth", "Improves appearance", "Custom shade-matched"],
@@ -129,7 +117,7 @@ export const services: Service[] = [
     slug: "bridges",
     title: "Bridges",
     excerpt: "Replace missing teeth using adjacent supports for a seamless smile.",
-    icon: FiGrid,
+    icon: Link2,
     details: {
       description: "Fixed bridges fill gaps by anchoring to neighboring teeth or implants.",
       advantages: ["Restores function", "Aesthetic solution", "Relatively quick"],
@@ -144,7 +132,7 @@ export const services: Service[] = [
     slug: "gum-disease-therapy",
     title: "Gum Disease Therapy",
     excerpt: "Treat gingivitis and periodontitis to protect your smile and health.",
-    icon: FiActivity,
+    icon: Activity,
     details: {
       description: "Scaling, root planing, and maintenance to control infection and inflammation.",
       advantages: ["Reduces bleeding", "Protects bone", "Improves breath"],
@@ -159,7 +147,7 @@ export const services: Service[] = [
     slug: "fillings",
     title: "Tooth-Colored Fillings",
     excerpt: "Repair cavities with natural-looking composite restorations.",
-    icon: FiStar,
+    icon: Plus,
     details: {
       description: "Composite fillings bond to tooth structure for conservative, aesthetic repairs.",
       advantages: ["Tooth-colored", "Conservative", "Quick appointment"],
@@ -174,7 +162,7 @@ export const services: Service[] = [
     slug: "extractions",
     title: "Extractions",
     excerpt: "Comfort-focused tooth removal when necessary for oral health.",
-    icon: FiZap,
+    icon: Cross,
     details: {
       description: "Simple or surgical removal with emphasis on comfort and healing.",
       advantages: ["Relieves pain", "Prepares for future restoration"],
@@ -189,7 +177,7 @@ export const services: Service[] = [
     slug: "paediatric-dentistry",
     title: "Pediatric Dentistry",
     excerpt: "Gentle, friendly care tailored for children at every stage.",
-    icon: FiHeart,
+    icon: Baby,
     details: {
       description: "Prevention-focused care including sealants, fluoride, and education.",
       advantages: ["Positive experiences", "Early prevention", "Growth monitoring"],
@@ -204,7 +192,7 @@ export const services: Service[] = [
     slug: "smile-makeover",
     title: "Smile Makeover",
     excerpt: "Comprehensive aesthetic plan to achieve your ideal smile.",
-    icon: FiSmile,
+    icon: Smile,
     details: {
       description: "Combines whitening, aligners, veneers, and more based on goals.",
       advantages: ["Customized plan", "Predictable outcomes", "Confidence boost"],

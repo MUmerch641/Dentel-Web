@@ -57,7 +57,7 @@ export function Footer() {
         </div>
         <div>
           <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide">Contact</h3>
-          <p className="text-sm opacity-90">Naveed Clinic</p>
+          <p className="text-sm opacity-90">Inside Naveed Clinic Complex</p>
           <p className="text-sm opacity-90">Abu Dhabi Road, Behind PIA office</p>
           <p className="text-sm opacity-90">Razi Road, Rahimyar Khan</p>
           <p className="text-sm opacity-90">Pakistan</p>

@@ -1,15 +1,15 @@
 import Link from "next/link"
-import type { IconType } from "react-icons"
-import { FiStar } from "react-icons/fi"
+import type { LucideIcon } from "lucide-react"
+import { Star } from "lucide-react"
 
 type Props = {
   slug: string
   title: string
   excerpt: string
-  Icon?: IconType
+  Icon?: LucideIcon
 }
 
-export function ServiceCard({ slug, title, excerpt, Icon = FiStar }: Props) {
+export function ServiceCard({ slug, title, excerpt, Icon = Star }: Props) {
   return (
     <article className="group rounded-lg border border-border bg-card p-5 transition hover:shadow-md">
       <div className="mb-3 flex items-center gap-3">

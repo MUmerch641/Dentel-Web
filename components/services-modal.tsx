@@ -19,7 +19,7 @@ const featuredServices: Service[] = [
   {
     title: "SCALING POLISHING & TEETH WHITENING",
     description: "Professional deep cleaning and whitening for a brighter, healthier smile",
-    image: "/dentist-consultation-with-patient.jpg",
+    image: "/dentist-consultation-with-patient.jpeg",
     price: "Starting from PKR 5,000",
     features: ["Deep cleaning", "Stain removal", "Professional whitening"]
   },
@@ -33,7 +33,7 @@ const featuredServices: Service[] = [
   {
     title: "HIFU SCALING AND POLISHING",
     description: "Advanced ultrasonic cleaning technology for superior results",
-    image: "/dental-team-and-technology.jpg", 
+    image: "/dental-team-and-technology.jpeg", 
     price: "Starting from PKR 7,000",
     features: ["Ultrasonic technology", "Gentle treatment", "Deep cleaning"]
   },
