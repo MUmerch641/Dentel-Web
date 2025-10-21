@@ -16,13 +16,13 @@ export default function HomePage() {
 
       <main>
         {/* Hero */}
-        <section className="relative min-h-screen bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 text-white overflow-hidden">
+        <section className="relative min-h-screen bg-white text-blue-900 overflow-hidden">
           {/* Animated Background Elements */}
           <div className="absolute inset-0">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/10 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute top-40 right-20 w-48 h-48 bg-cyan-300/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-            <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-blue-300/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-950/80 via-transparent to-blue-900/60"></div>
+            <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100/30 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute top-40 right-20 w-48 h-48 bg-blue-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-blue-100/30 rounded-full blur-3xl animate-pulse delay-2000"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-transparent to-blue-100/50"></div>
           </div>
           
           {/* Dental Pattern Overlay */}
@@ -36,65 +36,65 @@ export default function HomePage() {
             <div className="grid items-center gap-12 py-20 md:grid-cols-2 w-full">
               <div className="space-y-8">
                 {/* Clinic Badge */}
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 border border-white/20">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium text-blue-100">Now Open • 4 PM - 8 PM</span>
-                </div>
+                {/* <div className="inline-flex items-center gap-2 bg-blue-50 backdrop-blur-sm rounded-full px-4 py-2 border border-blue-200">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium text-blue-700">Now Open • 4 PM - 8 PM</span>
+                </div> */}
 
                 {/* Main Title with Enhanced Typography */}
                 <div className="space-y-4">
                   <h1 className="text-4xl md:text-7xl font-bold leading-tight">
-                    <span className="bg-gradient-to-r from-white via-blue-100 to-cyan-200 bg-clip-text text-transparent drop-shadow-2xl">
+                    <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-600 bg-clip-text text-transparent drop-shadow-sm">
                       Dental Care &
                     </span>
                     <br />
-                    <span className="bg-gradient-to-r from-cyan-200 via-blue-200 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                    <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 bg-clip-text text-transparent drop-shadow-sm">
                       Implant Clinic
                     </span>
                   </h1>
                   
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full"></div>
-                    <p className="text-xl md:text-2xl font-semibold text-cyan-200">Rahim Yar Khan</p>
+                    <div className="w-12 h-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
+                    <p className="text-xl md:text-2xl font-semibold text-blue-700">Rahim Yar Khan</p>
                   </div>
                 </div>
 
                 {/* Mission Statement */}
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                  <p className="text-lg md:text-xl text-blue-100 italic leading-relaxed">
+                <div className="bg-blue-50 backdrop-blur-sm rounded-2xl p-6 border border-blue-200">
+                  <p className="text-lg md:text-xl text-blue-800 italic leading-relaxed">
                     "Quality Dentistry Cannot Be Rushed"
                   </p>
-                  <p className="text-blue-200 mt-2">
+                  <p className="text-blue-700 mt-2">
                     We want you to smile Healthier & Brighter...
                   </p>
                 </div>
 
                 {/* Enhanced Key Features */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-to-br from-blue-600/20 to-cyan-600/20 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-cyan-400/50 transition-all duration-300 group">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 backdrop-blur-sm rounded-xl p-4 border border-blue-200 hover:border-blue-400 transition-all duration-300 group">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
                         </svg>
                       </div>
                       <div>
-                        <h3 className="font-semibold text-white">Modern Technology</h3>
-                        <p className="text-xs text-blue-200">Advanced Equipment</p>
+                        <h3 className="font-semibold text-blue-900">Modern Technology</h3>
+                        <p className="text-xs text-blue-700">Advanced Equipment</p>
                       </div>
                     </div>
                   </div>
 
-                  <div className="bg-gradient-to-br from-purple-600/20 to-pink-600/20 backdrop-blur-sm rounded-xl p-4 border border-white/10 hover:border-pink-400/50 transition-all duration-300 group">
+                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 backdrop-blur-sm rounded-xl p-4 border border-blue-200 hover:border-blue-400 transition-all duration-300 group">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                       </div>
                       <div>
-                        <h3 className="font-semibold text-white">Evening Hours</h3>
-                        <p className="text-xs text-blue-200">4 PM - 8 PM Daily</p>
+                        <h3 className="font-semibold text-blue-900">Evening Hours</h3>
+                        <p className="text-xs text-blue-700">4 PM - 8 PM Daily</p>
                       </div>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ export default function HomePage() {
                 {/* Enhanced CTA Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link href="#appointment" className="group">
-                    <button className="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-cyan-500/25 transform hover:scale-105 transition-all duration-300 border border-cyan-400/50">
+                    <button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-blue-400">
                       <div className="flex items-center justify-center gap-3">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
@@ -114,7 +114,7 @@ export default function HomePage() {
                   </Link>
                   
                   <Link href="/services" className="group">
-                    <button className="w-full sm:w-auto bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-2xl border border-white/20 hover:border-white/40 transform hover:scale-105 transition-all duration-300">
+                    <button className="w-full sm:w-auto bg-blue-50 backdrop-blur-sm hover:bg-blue-100 text-blue-900 px-8 py-4 rounded-xl font-bold text-lg shadow-xl border border-blue-300 hover:border-blue-400 transform hover:scale-105 transition-all duration-300">
                       <div className="flex items-center justify-center gap-3">
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2H5a2 2 0 00-2 2v2M7 7h10"/>
@@ -127,7 +127,7 @@ export default function HomePage() {
 
                 {/* Contact Info Quick Access */}
                 <div className="flex items-center gap-6 pt-4">
-                  <a href="tel:0315-5775320" className="flex items-center gap-2 text-cyan-200 hover:text-white transition-colors">
+                  <a href="tel:0315-5775320" className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition-colors">
                     <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
                       <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
@@ -136,9 +136,9 @@ export default function HomePage() {
                     <span className="font-medium">0315-5775320</span>
                   </a>
                   
-                  <div className="flex items-center gap-2 text-blue-200">
-                    <div className="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-center gap-2 text-blue-700">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <svg className="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
                       </svg>
@@ -155,7 +155,7 @@ export default function HomePage() {
                   <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-blue-200 to-cyan-100 shadow-2xl">
                     <img
                       alt="Modern Dental Clinic - Dr. Ramsha Saeed"
-                      src="/modern-dental-clinic.png"
+                      src="./hero.jpeg"
                       className="h-full w-full object-cover hover:scale-105 transition-transform duration-700"
                     />
                   </div>
@@ -168,9 +168,9 @@ export default function HomePage() {
                     </div>
                   </div>
                   
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white rounded-xl p-4 shadow-2xl">
+                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl p-4 shadow-2xl">
                     <div className="text-center">
-                      <div className="text-2xl font-bold">4+</div>
+                      <div className="text-2xl font-bold">12+</div>
                       <div className="text-sm opacity-90">Years Experience</div>
                     </div>
                   </div>
@@ -180,7 +180,7 @@ export default function HomePage() {
           </div>
 
           {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/60">
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-blue-600">
             <div className="flex flex-col items-center gap-2 animate-bounce">
               <span className="text-sm">Scroll to explore</span>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,55 +195,55 @@ export default function HomePage() {
           <div className="mx-auto max-w-6xl px-4">
             <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
               <div className="order-2 md:order-1">
-                <div className="bg-gradient-to-br from-blue-900 to-blue-800 text-white p-8 rounded-2xl shadow-2xl">
-                  <h2 className="text-3xl font-bold mb-2">Dr. Ramsha Saeed</h2>
-                  <p className="text-blue-200 mb-2 text-lg">Consultant Dental Surgeon</p>
-                  <p className="text-blue-300 mb-6">Esthetic & Restorative Dental Surgeon</p>
+                <div className="bg-white border-2 border-blue-200 text-blue-900 p-8 rounded-2xl shadow-2xl">
+                  <h2 className="text-3xl font-bold mb-2 text-blue-900">Dr. Ramsha Saeed</h2>
+                  <p className="text-blue-700 mb-2 text-lg">Consultant Dental Surgeon</p>
+                  <p className="text-blue-600 mb-6">Esthetic & Restorative Dental Surgeon</p>
                   
                   <div className="mb-6">
-                    <h3 className="text-xl font-semibold mb-3 text-blue-100">Qualifications</h3>
+                    <h3 className="text-xl font-semibold mb-3 text-blue-800">Qualifications</h3>
                     <div className="space-y-2">
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-blue-100">B.D.S, R.D.S</p>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-blue-700">B.D.S, R.D.S</p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-blue-100">M.C.P.S (CPSP)</p>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-blue-700">M.C.P.S (CPSP)</p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-blue-100">D.P.C.D, RCSI (Ireland)</p>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-blue-700">D.P.C.D, RCSI (Ireland)</p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-blue-100">C-Implantology</p>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-blue-700">C-Implantology</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="mb-6">
-                    <h3 className="text-xl font-semibold mb-3 text-blue-100">Professional Details</h3>
+                    <h3 className="text-xl font-semibold mb-3 text-blue-800">Professional Details</h3>
                     <div className="space-y-2">
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-blue-100 text-sm">Ex. Dental Surgeon SZMC/H, R.Y.Khan</p>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-blue-700 text-sm">Ex. Dental Surgeon SZMC/H, R.Y.Khan</p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-blue-100 text-sm">PMDC # 13121-D</p>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-blue-700 text-sm">PMDC # 13121-D</p>
                       </div>
                       <div className="flex items-start gap-3">
-                        <div className="w-2 h-2 bg-yellow-400 rounded-full mt-2 flex-shrink-0"></div>
-                        <p className="text-blue-100 text-sm">PHC# PL-88293</p>
+                        <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 flex-shrink-0"></div>
+                        <p className="text-blue-700 text-sm">PHC# PL-88293</p>
                       </div>
                     </div>
                   </div>
 
                   <div>
-                    <h3 className="text-xl font-semibold mb-3 text-blue-100">Expertise</h3>
-                    <p className="text-blue-100 text-sm italic">"Quality Dentistry Cannot Be Rushed"</p>
-                    <p className="text-blue-200 text-sm mt-2">Specializing in comprehensive dental care with focus on esthetic and restorative treatments.</p>
+                    <h3 className="text-xl font-semibold mb-3 text-blue-800">Expertise</h3>
+                    <p className="text-blue-700 text-sm italic">"Quality Dentistry Cannot Be Rushed"</p>
+                    <p className="text-blue-600 text-sm mt-2">Specializing in comprehensive dental care with focus on esthetic and restorative treatments.</p>
                   </div>
                 </div>
               </div>
@@ -341,9 +341,9 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials */}
-        <section className="border-y border-blue-200 bg-gradient-to-br from-blue-900 to-blue-800 py-12 md:py-16">
+        <section className="border-y border-blue-200 bg-white py-12 md:py-16">
           <div className="mx-auto max-w-6xl px-4">
-            <h2 className="mb-6 text-2xl font-bold md:text-3xl text-white">Patient Stories</h2>
+            <h2 className="mb-6 text-2xl font-bold md:text-3xl text-blue-900">Patient Stories</h2>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
               {testimonials.map((t, i) => (
                 <TestimonialCard key={i} name={t.name} text={t.text} rating={t.rating} />
@@ -533,11 +533,11 @@ export default function HomePage() {
         </section>
 
         {/* Location Section */}
-        <section className="py-12 md:py-16 bg-gradient-to-br from-blue-900 to-blue-800">
+        <section className="py-12 md:py-16 bg-white">
           <div className="mx-auto max-w-6xl px-4">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-white mb-4">Find Our Location</h2>
-              <p className="text-blue-100">Visit us at our modern clinic in Rahim Yar Khan</p>
+              <h2 className="text-3xl font-bold text-blue-900 mb-4">Find Our Location</h2>
+              <p className="text-blue-700">Visit us at our modern clinic in Rahim Yar Khan</p>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
@@ -584,19 +584,19 @@ export default function HomePage() {
                 </div>
               </div>
               
-              {/* Map Placeholder */}
+              {/* Google Map Embed */}
               <div className="bg-white p-4 rounded-xl shadow-xl">
-                <div className="aspect-video bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                      </svg>
-                    </div>
-                    <h3 className="text-blue-900 font-semibold">Interactive Map</h3>
-                    <p className="text-blue-700 text-sm">Click "Get Directions" to open in Google Maps</p>
-                  </div>
+                <div className="aspect-video rounded-lg overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.9445891540654!2d70.31547567484179!3d28.42092879365963!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39375bf3e39e3cc1%3A0x2444abd2444e8d5!2sNaveed%20Clinic!5e0!3m2!1sen!2s!4v1761072012656!5m2!1sen!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Dental Care & Implant Clinic Location Map"
+                  ></iframe>
                 </div>
               </div>
             </div>

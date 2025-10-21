@@ -4,45 +4,40 @@ import { useState, useEffect } from 'react'
 import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { X, Phone, Calendar } from 'lucide-react'
+import { X, Phone, Calendar, Sparkles, Shield, Clock, Award } from 'lucide-react'
 import Image from 'next/image'
 
 interface Service {
   title: string
   description: string
   image: string
-  price?: string
   features?: string[]
 }
 
 const featuredServices: Service[] = [
   {
-    title: "SCALING POLISHING & TEETH WHITENING",
-    description: "Professional deep cleaning and whitening for a brighter, healthier smile",
-    image: "/dentist-consultation-with-patient.jpeg",
-    price: "Starting from PKR 5,000",
-    features: ["Deep cleaning", "Stain removal", "Professional whitening"]
+    title: "Teeth Whitening & Cleaning",
+    description: "Professional deep cleaning and whitening treatment for a radiant, confident smile",
+    image: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=500&h=300&fit=crop",
+    features: ["Deep cleaning", "Stain removal", "Instant whitening", "Polish & fluoride"]
   },
   {
-    title: "VENEERS",
-    description: "Transform your smile with ultra-thin porcelain shells",
-    image: "/modern-dental-clinic.png",
-    price: "Starting from PKR 25,000",
-    features: ["Instant transformation", "Natural look", "Stain resistant"]
+    title: "Porcelain Veneers",
+    description: "Transform your smile with custom-designed, natural-looking porcelain veneers",
+    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&h=300&fit=crop",
+    features: ["Custom design", "Natural appearance", "Stain resistant", "Long-lasting"]
   },
   {
-    title: "HIFU SCALING AND POLISHING",
-    description: "Advanced ultrasonic cleaning technology for superior results",
-    image: "/dental-team-and-technology.jpeg", 
-    price: "Starting from PKR 7,000",
-    features: ["Ultrasonic technology", "Gentle treatment", "Deep cleaning"]
+    title: "Dental Implants",
+    description: "Permanent tooth replacement solution with titanium implants for lasting results",
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&h=300&fit=crop",
+    features: ["Permanent solution", "Natural feel", "Bone preservation", "High success rate"]
   },
   {
-    title: "ALIGNERS",
-    description: "Straighten your teeth discreetly with clear aligners",
-    image: "/dental-gallery-.jpg",
-    price: "Starting from PKR 80,000", 
-    features: ["Nearly invisible", "Removable", "Comfortable fit"]
+    title: "Clear Aligners",
+    description: "Invisible orthodontic treatment to straighten teeth discreetly and comfortably",
+    image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=500&h=300&fit=crop",
+    features: ["Nearly invisible", "Removable", "No metal", "Comfortable"]
   }
 ]
 
@@ -98,115 +93,111 @@ export default function ServicesModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0 gap-0">
-        <div className="relative bg-gradient-to-br from-blue-600 to-blue-800 text-white p-6">
+      <DialogContent className="max-w-5xl max-h-[95vh] overflow-y-auto p-0 gap-0 bg-white sm:rounded-lg rounded-none">
+        {/* Header Section */}
+        <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white p-4 sm:p-6 md:p-8 overflow-hidden">
+          {/* Animated Background Elements */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-white rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-cyan-300 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          </div>
+          
           <button
             onClick={() => setIsOpen(false)}
-            className="absolute top-4 right-4 p-2 hover:bg-white/20 rounded-full transition-colors"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 hover:bg-white/20 rounded-full transition-all hover:rotate-90 duration-300 z-10"
+            aria-label="Close modal"
           >
             <X className="h-5 w-5" />
           </button>
           
-          <div className="text-center">
-            <DialogTitle className="text-2xl font-bold mb-2">
-              Deal & Services
+          <div className="text-center relative z-10">
+            <div className="inline-flex items-center gap-2 bg-yellow-400 text-blue-900 px-3 sm:px-4 py-1.5 rounded-full text-xs font-bold mb-2 sm:mb-3 animate-pulse">
+              <Sparkles className="h-3 w-3" />
+              <span className="hidden xs:inline">LIMITED TIME OFFERS</span>
+              <span className="xs:hidden">SPECIAL OFFERS</span>
+            </div>
+            <DialogTitle className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+              Premium Dental Services
             </DialogTitle>
-            <p className="text-blue-100 text-sm">
-              Professional dental care with modern technology
+            <p className="text-blue-100 text-xs sm:text-sm max-w-2xl mx-auto px-2">
+              Transform your smile with our expert dental care
             </p>
+            
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 mt-3 sm:mt-4 text-xs px-2">
+              <div className="flex items-center gap-1.5">
+                <Shield className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-300" />
+                <span className="hidden sm:inline">Certified Dentists</span>
+                <span className="sm:hidden">Certified</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Award className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-300" />
+                <span>1200+ Patients</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <Clock className="h-3 w-3 sm:h-4 sm:w-4 text-cyan-300" />
+                <span className="hidden sm:inline">Same-Day Appointments</span>
+                <span className="sm:hidden">Same-Day</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 p-4 sm:p-6 bg-gradient-to-b from-gray-50 to-white">
           {featuredServices.map((service, index) => (
-            <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="relative h-48 bg-gray-100">
-                <div className="absolute top-2 left-2 bg-yellow-400 text-black px-2 py-1 rounded text-xs font-semibold">
-                  SPECIAL OFFER
-                </div>
-                <div className="flex items-center justify-center h-full text-gray-400">
+            <Card key={index} className="group overflow-hidden hover:shadow-2xl transition-all duration-300 border-2 border-blue-100 hover:border-blue-300 bg-white">
+              <div className="relative h-40 sm:h-48 md:h-52 bg-gradient-to-br from-blue-50 to-blue-100 overflow-hidden">
+                {/* Image with hover effect */}
+                <div className="relative w-full h-full overflow-hidden">
                   <Image
                     src={service.image}
                     alt={service.title}
-                    width={300}
-                    height={200}
-                    className="object-cover w-full h-full"
+                    width={500}
+                    height={300}
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
                     onError={(e) => {
-                      // Fallback to placeholder if image fails to load
                       const target = e.target as HTMLImageElement
-                      target.src = "/placeholder.jpg"
+                      target.src = "/dental-team-and-technology.jpeg"
                     }}
                   />
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               </div>
               
-              <CardContent className="p-4">
-                <h3 className="font-bold text-sm text-blue-900 mb-2 leading-tight">
+              <CardContent className="p-4 sm:p-5">
+                <h3 className="font-bold text-sm sm:text-base text-blue-900 mb-2 leading-tight group-hover:text-blue-700 transition-colors">
                   {service.title}
                 </h3>
                 
-                <p className="text-xs text-gray-600 mb-3 line-clamp-2">
+                <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 line-clamp-2">
                   {service.description}
                 </p>
                 
+                {/* Features with icons */}
                 {service.features && (
-                  <div className="mb-3">
+                  <div className="mb-3 sm:mb-4 space-y-1 sm:space-y-1.5">
                     {service.features.map((feature, idx) => (
-                      <div key={idx} className="text-xs text-gray-500 flex items-center">
-                        <span className="w-1 h-1 bg-blue-500 rounded-full mr-2"></span>
-                        {feature}
+                      <div key={idx} className="text-xs text-gray-700 flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex-shrink-0"></div>
+                        <span>{feature}</span>
                       </div>
                     ))}
                   </div>
                 )}
                 
-                {service.price && (
-                  <p className="text-xs text-green-600 font-semibold mb-3">
-                    {service.price}
-                  </p>
-                )}
-                
+                {/* Book Button */}
                 <Button 
                   onClick={() => handleBookNow(service.title)}
-                  className="w-full bg-blue-700 hover:bg-blue-800 text-white text-sm py-2"
+                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-xs sm:text-sm py-2.5 sm:py-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 font-semibold"
                 >
-                  Book Now
+                  <Calendar className="h-3 w-3 sm:h-4 sm:w-4 mr-2" />
+                  Book This Service
                 </Button>
               </CardContent>
             </Card>
           ))}
-        </div>
-
-        <div className="flex flex-col sm:flex-row gap-3 p-6 pt-0">
-          <Button 
-            onClick={handleCall}
-            variant="outline" 
-            className="flex-1 flex items-center justify-center gap-2 border-blue-600 text-blue-600 hover:bg-blue-50"
-          >
-            <Phone className="h-4 w-4" />
-            Call Now
-          </Button>
-          
-          <Button 
-            onClick={() => {
-              // Add your main booking page navigation
-              window.location.href = '/consultation'
-              setIsOpen(false)
-            }}
-            className="flex-1 flex items-center justify-center gap-2 bg-blue-700 hover:bg-blue-800"
-          >
-            <Calendar className="h-4 w-4" />
-            Book Consultation
-          </Button>
-        </div>
-
-        <div className="bg-gradient-to-r from-blue-50 to-blue-100 px-6 py-4 text-center">
-          <p className="text-xs text-gray-700 font-medium">
-            📍 Located in Rahim Yar Khan | 🕒 Open 9 AM - 8 PM | ⭐ 500+ Happy Patients
-          </p>
-          <p className="text-xs text-blue-600 mt-1">
-            Emergency services available 24/7
-          </p>
         </div>
       </DialogContent>
     </Dialog>

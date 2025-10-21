@@ -157,11 +157,11 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
           </select>
         </div>
       </div>
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-2">
-        <p className="text-xs text-blue-800">
+      <div className="bg-white border-2 border-blue-300 rounded-lg p-3 mb-2 shadow-sm">
+        <p className="text-xs text-blue-900 font-semibold">
           <strong>Clinic Hours:</strong> Evening 4:00 PM - 8:00 PM (Daily)
         </p>
-        <p className="text-xs text-blue-600 mt-1">
+        <p className="text-xs text-blue-700 mt-1">
           * We will confirm your appointment via phone call within 24 hours.
         </p>
       </div>

@@ -29,42 +29,42 @@
 
 @layer base {
   :root {
-    /* Deep Royal Blue Gradient Theme */
-    --background: 220 30% 97%;
-    --foreground: 230 60% 15%;
-    --card: 220 25% 98%;
-    --card-foreground: 230 60% 15%;
-    --popover: 220 25% 98%;
-    --popover-foreground: 230 60% 15%;
-    --primary: 230 80% 25%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 220 60% 85%;
-    --secondary-foreground: 230 60% 15%;
-    --muted: 220 50% 92%;
-    --muted-foreground: 230 30% 45%;
-    --accent: 230 70% 60%;
-    --accent-foreground: 0 0% 98%;
+    /* White Background with Blue Text Theme */
+    --background: 0 0% 100%;
+    --foreground: 220 70% 20%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 70% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 70% 20%;
+    --primary: 220 70% 30%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 60% 90%;
+    --secondary-foreground: 220 70% 20%;
+    --muted: 220 50% 95%;
+    --muted-foreground: 220 30% 40%;
+    --accent: 220 80% 50%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 40% 88%;
+    --border: 220 40% 85%;
     --input: 220 40% 90%;
-    --ring: 230 70% 50%;
-    --chart-1: 230 80% 55%;
+    --ring: 220 70% 50%;
+    --chart-1: 220 80% 55%;
     --chart-2: 210 70% 50%;
-    --chart-3: 250 65% 45%;
+    --chart-3: 230 65% 45%;
     --chart-4: 200 75% 60%;
-    --chart-5: 270 70% 55%;
+    --chart-5: 240 70% 55%;
     --radius: 0.5rem;
     
-    /* Custom Royal Blue Gradients */
-    --royal-gradient-primary: linear-gradient(135deg, hsl(230, 80%, 25%) 0%, hsl(240, 75%, 35%) 100%);
-    --royal-gradient-secondary: linear-gradient(135deg, hsl(220, 60%, 85%) 0%, hsl(230, 50%, 75%) 100%);
-    --royal-gradient-accent: linear-gradient(135deg, hsl(230, 70%, 60%) 0%, hsl(240, 65%, 50%) 100%);
-    --royal-gradient-hero: linear-gradient(135deg, hsl(230, 85%, 20%) 0%, hsl(240, 80%, 30%) 50%, hsl(220, 75%, 40%) 100%);
+    /* Custom Blue Gradients */
+    --royal-gradient-primary: linear-gradient(135deg, hsl(220, 70%, 30%) 0%, hsl(230, 75%, 40%) 100%);
+    --royal-gradient-secondary: linear-gradient(135deg, hsl(220, 60%, 90%) 0%, hsl(230, 50%, 85%) 100%);
+    --royal-gradient-accent: linear-gradient(135deg, hsl(220, 80%, 50%) 0%, hsl(230, 75%, 60%) 100%);
+    --royal-gradient-hero: linear-gradient(135deg, hsl(220, 10%, 98%) 0%, hsl(230, 20%, 96%) 50%, hsl(220, 15%, 94%) 100%);
   }
 
   .dark {
-    /* Dark Mode Royal Blue Theme */
+    /* Dark Mode - Keep as fallback */
     --background: 230 80% 8%;
     --foreground: 220 30% 95%;
     --card: 230 70% 12%;
@@ -90,7 +90,7 @@
     --chart-4: 200 70% 65%;
     --chart-5: 270 65% 60%;
     
-    /* Dark Mode Royal Blue Gradients */
+    /* Dark Mode Blue Gradients */
     --royal-gradient-primary: linear-gradient(135deg, hsl(230, 70%, 70%) 0%, hsl(240, 65%, 60%) 100%);
     --royal-gradient-secondary: linear-gradient(135deg, hsl(230, 40%, 20%) 0%, hsl(240, 35%, 30%) 100%);
     --royal-gradient-accent: linear-gradient(135deg, hsl(230, 70%, 55%) 0%, hsl(240, 65%, 45%) 100%);
