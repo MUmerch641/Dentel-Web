@@ -93,7 +93,7 @@ export default function ServicesModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="max-w-5xl max-h-[95vh] overflow-y-auto p-0 gap-0 bg-white sm:rounded-lg rounded-none">
+      <DialogContent showCloseButton={false} className="max-w-5xl max-h-[95vh] overflow-y-auto p-0 gap-0 bg-white sm:rounded-lg rounded-none">
         {/* Header Section */}
         <div className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 text-white p-4 sm:p-6 md:p-8 overflow-hidden">
           {/* Animated Background Elements */}

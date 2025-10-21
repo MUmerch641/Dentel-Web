@@ -543,7 +543,6 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               {/* Address Info */}
               <div className="bg-white p-8 rounded-xl shadow-xl">
-                <h3 className="text-2xl font-bold text-blue-900 mb-4">Dr. Usama's Dental Clinic</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <div className="bg-gradient-to-r from-blue-600 to-blue-700 text-white p-2 rounded-full">
