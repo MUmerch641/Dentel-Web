@@ -19,12 +19,18 @@ interface Appointment {
   patient_contact: string;
   scheduled_time: string;
   status: string;
+  appointment_type?: 'online' | 'clinic';
+  service_type?: string;
+  payment_proof_url?: string;
 }
 
 function AppointmentsList() {
   const [appointments, setAppointments] = useState<Appointment[]>([]);
+  const [filteredAppointments, setFilteredAppointments] = useState<Appointment[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState<'all' | 'online' | 'clinic'>('all');
+  const [showPaymentProof, setShowPaymentProof] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchAppointments = async () => {
@@ -52,6 +58,36 @@ function AppointmentsList() {
     fetchAppointments();
   }, []);
 
+  // Filter appointments based on selected filter
+  useEffect(() => {
+    if (filter === 'all') {
+      setFilteredAppointments(appointments);
+    } else {
+      setFilteredAppointments(appointments.filter(apt => apt.appointment_type === filter));
+    }
+  }, [appointments, filter]);
+
+  const updateAppointmentStatus = async (appointmentId: string, newStatus: string) => {
+    try {
+      const { error } = await supabase
+        .from('Appointments')
+        .update({ status: newStatus })
+        .eq('id', appointmentId);
+
+      if (error) throw error;
+
+      // Update local state
+      setAppointments(prev =>
+        prev.map(apt =>
+          apt.id === appointmentId ? { ...apt, status: newStatus } : apt
+        )
+      );
+    } catch (err) {
+      console.error('Error updating appointment status:', err);
+      setError('Failed to update appointment status');
+    }
+  };
+
   if (loading) {
     return <p>Loading appointments...</p>;
   }
@@ -62,43 +98,169 @@ function AppointmentsList() {
 
   return (
     <div className="mt-12">
-      <h2 className="text-2xl font-bold mb-6">Upcoming Appointments</h2>
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-2xl font-bold">Patient Appointments</h2>
+
+        {/* Filter Buttons */}
+        <div className="flex gap-2">
+          <button
+            onClick={() => setFilter('all')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter === 'all'
+                ? 'bg-blue-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+          >
+            All ({appointments.length})
+          </button>
+          <button
+            onClick={() => setFilter('online')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter === 'online'
+                ? 'bg-green-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+          >
+            💻 Online ({appointments.filter(a => a.appointment_type === 'online').length})
+          </button>
+          <button
+            onClick={() => setFilter('clinic')}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${filter === 'clinic'
+                ? 'bg-purple-600 text-white'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+              }`}
+          >
+            🏥 In-Clinic ({appointments.filter(a => a.appointment_type === 'clinic').length})
+          </button>
+        </div>
+      </div>
+
       <div className="overflow-x-auto bg-white rounded-lg shadow">
         <table className="min-w-full">
           <thead className="bg-gray-100 border-b">
             <tr>
-              <th className="text-left p-4 font-semibold">Patient Name</th>
+              <th className="text-left p-4 font-semibold">Patient</th>
               <th className="text-left p-4 font-semibold">Contact</th>
-              <th className="text-left p-4 font-semibold">Scheduled Time</th>
+              <th className="text-left p-4 font-semibold">Service</th>
+              <th className="text-left p-4 font-semibold">Type</th>
+              <th className="text-left p-4 font-semibold">Scheduled</th>
               <th className="text-left p-4 font-semibold">Status</th>
-              <th className="text-left p-4 font-semibold">Action</th>
+              <th className="text-left p-4 font-semibold">Payment</th>
+              <th className="text-left p-4 font-semibold">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {appointments.map((appt) => (
+            {filteredAppointments.map((appt) => (
               <tr key={appt.id} className="border-b hover:bg-gray-50">
-                <td className="p-4">{appt.patient_name}</td>
-                <td className="p-4">{appt.patient_contact}</td>
-                <td className="p-4">{new Date(appt.scheduled_time).toLocaleString()}</td>
+                <td className="p-4 font-medium">{appt.patient_name}</td>
                 <td className="p-4">
-                  <span className="px-2 py-1 text-sm font-semibold rounded-full bg-green-100 text-green-800">
-                    {appt.status}
+                  <a href={`tel:${appt.patient_contact}`} className="text-blue-600 hover:underline">
+                    {appt.patient_contact}
+                  </a>
+                </td>
+                <td className="p-4 text-sm">{appt.service_type || 'General'}</td>
+                <td className="p-4">
+                  <span className={`px-2 py-1 text-xs font-semibold rounded-full ${appt.appointment_type === 'online'
+                      ? 'bg-green-100 text-green-800'
+                      : 'bg-purple-100 text-purple-800'
+                    }`}>
+                    {appt.appointment_type === 'online' ? '💻 Online' : '🏥 In-Clinic'}
                   </span>
                 </td>
-                <td className="p-4 text-right">
-                  <Link 
-                    href={`/consultation/${appt.id}`}
-                    target="_blank"
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded text-sm"
+                <td className="p-4 text-sm">{new Date(appt.scheduled_time).toLocaleString()}</td>
+                <td className="p-4">
+                  <select
+                    value={appt.status}
+                    onChange={(e) => updateAppointmentStatus(appt.id, e.target.value)}
+                    className={`px-2 py-1 text-xs font-semibold rounded border text-white ${appt.status === 'Confirmed' ? 'bg-green-600' :
+                        appt.status === 'Pending Payment' ? 'bg-yellow-600' :
+                          appt.status === 'Completed' ? 'bg-blue-600' :
+                            appt.status === 'Cancelled' ? 'bg-red-600' : 'bg-gray-600'
+                      }`}
                   >
-                    Start/Join Call
-                  </Link>
+                    <option value="Pending Payment">Pending Payment</option>
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Cancelled">Cancelled</option>
+                  </select>
+                </td>
+                <td className="p-4">
+                  {appt.payment_proof_url ? (
+                    <button
+                      onClick={() => setShowPaymentProof(appt.payment_proof_url!)}
+                      className="text-green-600 hover:text-green-800 text-sm font-medium underline"
+                    >
+                      View Proof
+                    </button>
+                  ) : (
+                    <span className="text-gray-400 text-sm">Clinic payment</span>
+                  )}
+                </td>
+                <td className="p-4">
+                  <div className="flex gap-2">
+                    {appt.appointment_type === 'online' ? (
+                      <Link
+                        href={`/consultation/${appt.id}`}
+                        target="_blank"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-1 px-3 rounded text-sm"
+                      >
+                        Video Call
+                      </Link>
+                    ) : (
+                      <span className="bg-gray-400 text-white font-semibold py-1 px-3 rounded text-sm cursor-not-allowed">
+                        In-Person
+                      </span>
+                    )}
+
+                  </div>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
+        {filteredAppointments.length === 0 && (
+          <div className="text-center py-8 text-gray-500">
+            No {filter !== 'all' ? filter : ''} appointments found.
+          </div>
+        )}
       </div>
+
+      {/* Payment Proof Modal */}
+      {showPaymentProof && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-lg w-full mx-4">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">Payment Proof</h3>
+              <button
+                onClick={() => setShowPaymentProof(null)}
+                className="text-gray-500 hover:text-gray-700 text-xl"
+              >
+                ×
+              </button>
+            </div>
+            <div className="text-center">
+              <img
+                src={showPaymentProof}
+                alt="Payment Proof"
+                className="max-w-full max-h-96 mx-auto rounded-lg shadow-lg"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = '/placeholder.jpg';
+                }}
+              />
+            </div>
+            <div className="mt-4 text-center">
+              <a
+                href={showPaymentProof}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline text-sm"
+              >
+                View Full Size
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -110,13 +272,13 @@ export default function AdminDashboardPage() {
   const [error, setError] = useState<string | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
   const [fetchLoading, setFetchLoading] = useState(true);
-  
+
   const router = useRouter();
 
   const fetchPosts = async () => {
     setFetchLoading(true);
     setError(null);
-    
+
     try {
       const { data, error } = await supabase
         .from('posts')
@@ -170,7 +332,7 @@ export default function AdminDashboardPage() {
     if (!confirm('Are you sure you want to delete this post?')) return;
 
     console.log('Attempting to delete post with uuid:', uuid);
-    
+
     try {
       const { error } = await supabase.from('posts').delete().eq('uuid', uuid);
 
@@ -193,7 +355,7 @@ export default function AdminDashboardPage() {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold">Create New Blog Post</h2>
       </div>
-      
+
       <form onSubmit={handleSubmit} className="mb-10">
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-700 text-sm font-bold mb-2">
