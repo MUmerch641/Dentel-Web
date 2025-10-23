@@ -76,7 +76,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="underline underline-offset-4 transition-colors hover:text-blue-900 hover:bg-blue-50 rounded px-1"
             >
-              Upward Co.
+               AK.
             </a>
             </p>
         </div>
