@@ -57,53 +57,19 @@ const featuredServices: Service[] = [
 
 export default function ServicesModal() {
   const [isOpen, setIsOpen] = useState(false)
-  const [hasShown, setHasShown] = useState(false)
 
-  useEffect(() => {
-    // Check if modal has been shown before (within last 24 hours)
-    const lastShown = localStorage.getItem('servicesModalLastShown')
-    const now = Date.now()
-    const oneDayAgo = now - (24 * 60 * 60 * 1000)
-    
-    if (lastShown && parseInt(lastShown) > oneDayAgo) {
-      setHasShown(true)
-      return
-    }
-
-    const handleScroll = () => {
-      if (hasShown) return
-      
-      const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100
-      
-      // Show modal when user has scrolled 30% of the page
-      if (scrollPercentage > 30) {
-        setIsOpen(true)
-        setHasShown(true)
-        localStorage.setItem('servicesModalLastShown', now.toString())
-      }
-    }
-
-    // Add delay to prevent immediate trigger
-    const timer = setTimeout(() => {
-      window.addEventListener('scroll', handleScroll)
-    }, 3000) // Wait 3 seconds before enabling scroll trigger
-
-    return () => {
-      clearTimeout(timer)
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [hasShown])
 
   const handleBookNow = (serviceName: string) => {
     // Add your booking logic here
-    console.log(`Booking ${serviceName}`)
     // You can integrate with your appointment booking system
     setIsOpen(false)
+    // scroll to booking section
+    const bookingSection = document.getElementById('appointment')
+    if (bookingSection) {
+      bookingSection.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
-  const handleCall = () => {
-    window.open('tel:+92-68-5555555', '_self') // Replace with your actual phone number
-  }
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>

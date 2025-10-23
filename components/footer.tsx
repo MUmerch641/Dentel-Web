@@ -71,7 +71,7 @@ export function Footer() {
             <p>
             Developed by{" "}
             <a
-              href="https://www.upward.com"
+              href="https://aksocialmediamarketingagency.website"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-4 transition-colors hover:text-blue-900 hover:bg-blue-50 rounded px-1"
