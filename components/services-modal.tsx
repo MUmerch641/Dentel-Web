@@ -57,12 +57,45 @@ const featuredServices: Service[] = [
 
 export default function ServicesModal() {
   const [isOpen, setIsOpen] = useState(false)
+  const [hasTriggered, setHasTriggered] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Trigger modal when user scrolls down 200px from top
+      if (window.scrollY > 200 && !hasTriggered && !isOpen) {
+        setIsOpen(true)
+        setHasTriggered(true)
+      }
+    }
+
+    // Reset trigger when page loads/refreshes
+    setHasTriggered(false)
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll)
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [hasTriggered, isOpen])
+
+  // Reset trigger when modal closes so it can show again on next visit
+  const handleModalClose = (open: boolean) => {
+    setIsOpen(open)
+    if (!open) {
+      // Reset after a delay so modal can trigger again
+      setTimeout(() => {
+        setHasTriggered(false)
+      }, 3000) // 3 second delay before it can trigger again
+    }
+  }
 
 
   const handleBookNow = (serviceName: string) => {
     // Add your booking logic here
     // You can integrate with your appointment booking system
-    setIsOpen(false)
+    handleModalClose(false)
     // scroll to booking section
     const bookingSection = document.getElementById('appointment')
     if (bookingSection) {
@@ -72,12 +105,12 @@ export default function ServicesModal() {
 
 
   return (
-    <Dialog open={isOpen} onOpenChange={setIsOpen}>
+    <Dialog open={isOpen} onOpenChange={handleModalClose}>
       <DialogContent showCloseButton={false} className="max-w-xl sm:max-w-2xl md:max-w-3xl max-h-[90vh] overflow-y-auto p-0 gap-0 bg-white rounded-xl">
         {/* Header */}
         <div className="relative bg-gradient-to-r from-blue-900 to-blue-800 text-white p-4 sm:p-6">
           <button
-            onClick={() => setIsOpen(false)}
+            onClick={() => handleModalClose(false)}
             className="absolute top-2 right-2 sm:top-3 sm:right-3 p-2 hover:bg-white/20 rounded-full transition-all z-10 bg-white/10"
             aria-label="Close modal"
           >
