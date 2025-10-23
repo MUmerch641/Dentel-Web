@@ -1,19 +1,23 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Use service role key for storage (bypasses RLS)
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!,
-  {
-    auth: {
-      autoRefreshToken: false,
-      persistSession: false
-    }
-  }
-)
-
 export async function POST(request: Request) {
   try {
+    // Check environment variables
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+
+    if (!supabaseUrl || !supabaseServiceKey) {
+      return Response.json({ error: 'Missing Supabase configuration' }, { status: 500 })
+    }
+
+    // Create Supabase admin client
+    const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey, {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    })
+
     const formData = await request.formData()
     const file = formData.get('file') as File
     const appointmentId = formData.get('appointmentId') as string
