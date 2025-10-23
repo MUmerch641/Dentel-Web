@@ -60,17 +60,23 @@ export default function ServicesModal() {
   const [hasTriggered, setHasTriggered] = useState(false)
 
   useEffect(() => {
+    // Check if modal was already shown in this session
+    const wasShown = sessionStorage.getItem('servicesModalShown')
+    if (wasShown) {
+      setHasTriggered(true)
+      return
+    }
+
     const handleScroll = () => {
-      // Trigger modal when user scrolls down 200px from top
-      if (window.scrollY > 200 && !hasTriggered && !isOpen) {
+      // Trigger modal when user scrolls down 300px from top (only once per session)
+      if (window.scrollY > 300 && !hasTriggered) {
         setIsOpen(true)
         setHasTriggered(true)
+        // Remember that modal was shown this session
+        sessionStorage.setItem('servicesModalShown', 'true')
       }
     }
 
-    // Reset trigger when page loads/refreshes
-    setHasTriggered(false)
-    
     // Add scroll listener
     window.addEventListener('scroll', handleScroll)
     
@@ -78,16 +84,15 @@ export default function ServicesModal() {
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [hasTriggered, isOpen])
+  }, [hasTriggered])
 
-  // Reset trigger when modal closes so it can show again on next visit
+  // Handle modal close - don't show again this session
   const handleModalClose = (open: boolean) => {
     setIsOpen(open)
     if (!open) {
-      // Reset after a delay so modal can trigger again
-      setTimeout(() => {
-        setHasTriggered(false)
-      }, 3000) // 3 second delay before it can trigger again
+      // Mark as permanently closed for this session
+      setHasTriggered(true)
+      sessionStorage.setItem('servicesModalShown', 'true')
     }
   }
 
