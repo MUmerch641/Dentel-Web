@@ -20,7 +20,7 @@ interface Service {
 
 const featuredServices: Service[] = [
   {
-    title: "SCALING POLISHING & TEETH WHITENING",
+    title: "TEETH WHITENING/SCALING/POLISHING",
     subtitle: "3 procedures",
     description: "Complete dental cleaning and whitening package for a brighter smile",
     image: "https://media.istockphoto.com/id/528740755/photo/professional-teeth-cleaning.jpg?s=612x612&w=0&k=20&c=snFQ6XhQWamHVbnQD6jClnAEvy3Gaoz6-esTaactGZA=",
@@ -30,16 +30,16 @@ const featuredServices: Service[] = [
   },
   {
     title: "VENEERS",
-    subtitle: "Hydra Facial/ 1 Laser Session",
-    description: "Transform your smile with custom-designed porcelain veneers",
+    subtitle: "Transform your smile",
+    description: "Custom-designed porcelain veneers for perfect aesthetics",
     image: "https://media.istockphoto.com/id/1602825167/photo/dental-veneer-placement-over-frontal-teeth-3d-illustration.jpg?s=612x612&w=0&k=20&c=4tui2AZmKJB0_TC2oHNrclvD0CsbTlTJ7kI0mko7tk0=",
     discount: "20% OFF",
     bookingNote: "on the treatment that is booked online"
   },
   {
-    title: "HIFU",
-    subtitle: "Scaling and Polishing",
-    description: "Advanced ultrasonic cleaning technology for deep cleaning",
+    title: "FIXED CROWNS",
+    subtitle: "Per tooth",
+    description: "Durable and natural-looking dental crowns for damaged teeth",
     image: "https://media.istockphoto.com/id/1029340434/photo/professional-teeth-cleaning-ultrasonic-teeth-cleaning-machine-delete-dental-calculus-from.jpg?s=612x612&w=0&k=20&c=XaQ2Cn6lXmUwDiOa3vbjxi8uKqw2xMQVLMIHCUzGTA0=",
     originalPrice: "9,000",
     discountedPrice: "5,000",
@@ -47,8 +47,8 @@ const featuredServices: Service[] = [
   },
   {
     title: "ALIGNERS",
-    subtitle: "Hydra Facial/ Teeth Whitening",
-    description: "Invisible orthodontic treatment for straightening teeth discreetly",
+    subtitle: "Invisible braces",
+    description: "Clear aligners for discreet orthodontic treatment",
     image: "https://media.istockphoto.com/id/1429256190/photo/clear-aligner-dental-night-guard.jpg?s=612x612&w=0&k=20&c=lyGXownUrxDI22u5D13sGWLFsuXQSdwzvKDUQ1YEG6Y=",
     discount: "20% OFF",
     bookingNote: "on the treatment that is booked online"

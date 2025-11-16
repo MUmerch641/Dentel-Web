@@ -15,180 +15,182 @@ export default function HomePage() {
       <Header />
 
       <main>
-        {/* Hero */}
-        <section className="relative min-h-screen bg-white text-blue-900 overflow-hidden">
-          {/* Animated Background Elements */}
-          <div className="absolute inset-0">
-            <div className="absolute top-20 left-10 w-32 h-32 bg-blue-100/30 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute top-40 right-20 w-48 h-48 bg-blue-200/30 rounded-full blur-3xl animate-pulse delay-1000"></div>
-            <div className="absolute bottom-20 left-1/3 w-40 h-40 bg-blue-100/30 rounded-full blur-3xl animate-pulse delay-2000"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-50/50 via-transparent to-blue-100/50"></div>
-          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{/* Hero */}
+<section
+  className="relative min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50 text-slate-900 overflow-hidden"
+  style={{
+    backgroundImage: `url('/back-pic.jpeg')`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundAttachment: 'fixed',
+  }}
+>
+  {/* Subtle overlay for better text readability */}
+  <div className="absolute inset-0 bg-black/10"></div>
+
+  {/* Refined animated background elements */}
+  <div className="absolute inset-0">
+    <div className="absolute top-10 left-5 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
+    <div className="absolute bottom-10 right-5 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl"></div>
+  </div>
+
+  <div className="relative mx-auto max-w-7xl px-4 lg:px-8 z-10 flex items-center min-h-screen">
+    <div className="grid items-center gap-16 py-20 lg:grid-cols-2 w-full">
+      {/* Left Content */}
+      <div className="space-y-10">
+        {/* Clinic Badge */}
+        <div className="inline-flex items-center gap-2 bg-white/90 backdrop-blur-md rounded-full px-4 py-2.5 border border-white/30 shadow-lg hover:shadow-xl transition-shadow">
+          <div className="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></div>
+          <span className="text-sm font-semibold text-slate-700">Open Now • 4 PM - 8 PM</span>
+        </div>
+
+        {/* Main Heading */}
+        <div className="space-y-6">
+          <h1 className="text-5xl md:text-7xl font-black leading-tight text-white drop-shadow-lg">
+            Dental Care &<br />
+            <span className="bg-gradient-to-r from-cyan-300 via-blue-300 to-white bg-clip-text text-transparent">
+              Implant Clinic
+            </span>
+          </h1>
           
-          {/* Dental Pattern Overlay */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="absolute top-1/4 left-1/4 text-9xl">🦷</div>
-            <div className="absolute top-3/4 right-1/4 text-8xl">✨</div>
-            <div className="absolute top-1/2 right-1/3 text-7xl">😊</div>
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full shadow-lg"></div>
+            <p className="text-2xl font-bold text-white drop-shadow">Rahim Yar Khan</p>
           </div>
+        </div>
 
-          <div className="relative mx-auto max-w-7xl px-4 z-10 flex items-center min-h-screen">
-            <div className="grid items-center gap-12 py-20 md:grid-cols-2 w-full">
-              <div className="space-y-8">
-                {/* Clinic Badge */}
-                {/* <div className="inline-flex items-center gap-2 bg-blue-50 backdrop-blur-sm rounded-full px-4 py-2 border border-blue-200">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium text-blue-700">Now Open • 4 PM - 8 PM</span>
-                </div> */}
+        {/* Tagline Box */}
+        <div className="bg-white/95 backdrop-blur-lg rounded-2xl p-8 border border-white/40 shadow-2xl hover:shadow-cyan-500/20 transition-all duration-300">
+          <p className="text-2xl font-bold text-slate-900 italic leading-relaxed">
+            "Quality Dentistry Cannot Be Rushed"
+          </p>
+          <p className="text-slate-600 mt-3 text-lg font-medium">
+            We want you to smile Healthier & Brighter
+          </p>
+        </div>
 
-                {/* Main Title with Enhanced Typography */}
-                <div className="space-y-4">
-                  <h1 className="text-4xl md:text-7xl font-bold leading-tight">
-                    <span className="bg-gradient-to-r from-blue-900 via-blue-700 to-blue-600 bg-clip-text text-transparent drop-shadow-sm">
-                      Dental Care &
-                    </span>
-                    <br />
-                    <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-900 bg-clip-text text-transparent drop-shadow-sm">
-                      Implant Clinic
-                    </span>
-                  </h1>
-                  
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full"></div>
-                    <p className="text-xl md:text-2xl font-semibold text-blue-700">Rahim Yar Khan</p>
-                  </div>
-                </div>
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 pt-4">
+          <Link href="#appointment">
+            <button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 text-white px-10 py-4 rounded-xl font-bold text-lg shadow-2xl hover:shadow-cyan-500/40 transform hover:scale-105 transition-all duration-300 border border-cyan-300 flex items-center justify-center gap-3 group">
+              <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              <span>Book Appointment</span>
+            </button>
+          </Link>
+          
+          <Link href="/services">
+            <button className="w-full sm:w-auto bg-white/95 backdrop-blur-md hover:bg-white text-slate-900 px-10 py-4 rounded-xl font-bold text-lg shadow-xl border border-white/40 transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-3 group">
+              <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2H5a2 2 0 00-2 2v2M7 7h10"/>
+              </svg>
+              <span>Our Services</span>
+            </button>
+          </Link>
+        </div>
 
-                {/* Mission Statement */}
-                <div className="bg-blue-50 backdrop-blur-sm rounded-2xl p-6 border border-blue-200">
-                  <p className="text-lg md:text-xl text-blue-800 italic leading-relaxed">
-                    "Quality Dentistry Cannot Be Rushed"
-                  </p>
-                  <p className="text-blue-700 mt-2">
-                    We want you to smile Healthier & Brighter...
-                  </p>
-                </div>
-
-                {/* Enhanced Key Features */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 backdrop-blur-sm rounded-xl p-4 border border-blue-200 hover:border-blue-400 transition-all duration-300 group">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-blue-900">Modern Technology</h3>
-                        <p className="text-xs text-blue-700">Advanced Equipment</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-blue-50 to-blue-100 backdrop-blur-sm rounded-xl p-4 border border-blue-200 hover:border-blue-400 transition-all duration-300 group">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-700 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-blue-900">Evening Hours</h3>
-                        <p className="text-xs text-blue-700">4 PM - 8 PM Daily</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Enhanced CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Link href="#appointment" className="group">
-                    <button className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-xl hover:shadow-blue-500/25 transform hover:scale-105 transition-all duration-300 border border-blue-400">
-                      <div className="flex items-center justify-center gap-3">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-                        </svg>
-                        <span>Book Appointment</span>
-                      </div>
-                    </button>
-                  </Link>
-                  
-                  <Link href="/services" className="group">
-                    <button className="w-full sm:w-auto bg-blue-50 backdrop-blur-sm hover:bg-blue-100 text-blue-900 px-8 py-4 rounded-xl font-bold text-lg shadow-xl border border-blue-300 hover:border-blue-400 transform hover:scale-105 transition-all duration-300">
-                      <div className="flex items-center justify-center gap-3">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2H5a2 2 0 00-2 2v2M7 7h10"/>
-                        </svg>
-                        <span>Our Services</span>
-                      </div>
-                    </button>
-                  </Link>
-                </div>
-
-                {/* Contact Info Quick Access */}
-                <div className="flex items-center gap-6 pt-4">
-                  <a href="tel:0315-5775320" className="flex items-center gap-2 text-blue-700 hover:text-blue-900 transition-colors">
-                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                      </svg>
-                    </div>
-                    <span className="font-medium">0315-5775320</span>
-                  </a>
-                  
-                  <div className="flex items-center gap-2 text-blue-700">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                      <svg className="w-4 h-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                      </svg>
-                    </div>
-                    <span className="font-medium">Abu Dhabi Road</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Enhanced Image Section */}
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-3xl blur-3xl transform rotate-6"></div>
-                <div className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/20 shadow-2xl">
-                  <div className="aspect-[4/3] w-full rounded-2xl overflow-hidden bg-gradient-to-br from-blue-200 to-cyan-100 shadow-2xl">
-                    <img
-                      alt="Modern Dental Clinic - Dr. Ramsha Saeed"
-                      src="./hero.jpeg"
-                      className="h-full w-full object-cover hover:scale-105 transition-transform duration-700"
-                    />
-                  </div>
-                  
-                  {/* Floating Stats */}
-                  <div className="absolute -bottom-4 -left-4 bg-white rounded-xl p-4 shadow-2xl border border-blue-100">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-900">1200+</div>
-                      <div className="text-sm text-blue-600">Happy Patients</div>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute -top-4 -right-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl p-4 shadow-2xl">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold">12+</div>
-                      <div className="text-sm opacity-90">Years Experience</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-blue-600">
-            <div className="flex flex-col items-center gap-2 animate-bounce">
-              <span className="text-sm">Scroll to explore</span>
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+        {/* Contact Info */}
+        <div className="flex flex-col sm:flex-row gap-6 pt-6 border-t border-white/20">
+          <a href="tel:0315-5775320" className="flex items-center gap-3 text-white hover:text-cyan-300 transition-colors group">
+            <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
               </svg>
             </div>
+            <div>
+              <p className="text-sm opacity-75">Call Us</p>
+              <p className="font-bold text-lg">0315-5775320</p>
+            </div>
+          </a>
+          
+          <div className="flex items-center gap-3 text-white">
+            <div className="w-12 h-12 bg-blue-500/30 backdrop-blur-md rounded-full flex items-center justify-center border border-white/20">
+              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              </svg>
+            </div>
+            <div>
+              <p className="text-sm opacity-75">Location</p>
+              <p className="font-bold text-lg">Abu Dhabi Road</p>
+            </div>
           </div>
-        </section>
+        </div>
+      </div>
+
+      {/* Right Image Section */}
+      <div className="relative hidden lg:block">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-400/20 to-blue-400/20 rounded-3xl blur-3xl"></div>
+        <div className="relative bg-white/10 backdrop-blur-xl rounded-3xl p-2 border border-white/30 shadow-2xl">
+          <div className="aspect-[3/4] w-full rounded-2xl overflow-hidden bg-slate-200 shadow-2xl">
+            <img
+              alt="Modern Dental Clinic - Dr. Ramsha Saeed"
+              src="./hero.jpeg"
+              className="h-full w-full object-cover hover:scale-110 transition-transform duration-700"
+            />
+          </div>
+          
+          {/* Floating Stats */}
+          <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-5 shadow-2xl border border-white/40 backdrop-blur-lg hover:shadow-cyan-500/30 transition-shadow">
+            <div className="text-center">
+              <div className="text-3xl font-black text-transparent bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text">1200+</div>
+              <div className="text-sm font-semibold text-slate-600 mt-1">Happy Patients</div>
+            </div>
+          </div>
+          
+          <div className="absolute -top-6 -right-6 bg-gradient-to-br from-blue-600 to-cyan-500 text-white rounded-2xl p-5 shadow-2xl border border-cyan-300/50 hover:shadow-cyan-500/40 transition-shadow">
+            <div className="text-center">
+              <div className="text-3xl font-black">12+</div>
+              <div className="text-sm font-semibold opacity-95 mt-1">Years Experience</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll Indicator */}
+  <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white">
+    <div className="flex flex-col items-center gap-2 animate-bounce">
+      <span className="text-sm font-semibold drop-shadow">Scroll to explore</span>
+      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         {/* Doctor Profile Section */}
         <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 to-blue-50">
@@ -196,9 +198,24 @@ export default function HomePage() {
             <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2">
               <div className="order-2 md:order-1">
                 <div className="bg-white border-2 border-blue-200 text-blue-900 p-8 rounded-2xl shadow-2xl">
-                  <h2 className="text-3xl font-bold mb-2 text-blue-900">Dr. Ramsha Saeed</h2>
-                  <p className="text-blue-700 mb-2 text-lg">Consultant Dental Surgeon</p>
-                  <p className="text-blue-600 mb-6">Esthetic & Restorative Dental Surgeon</p>
+                  <div id="doctor" className="md:flex md:items-center md:justify-between gap-6">
+                    <div className="flex-1">
+                      <h2 className="text-3xl font-bold mb-2 text-blue-900">Dr. Ramsha Saeed</h2>
+                      <p className="text-blue-700 mb-2 text-lg">Consultant Dental Surgeon</p>
+                      <p className="text-blue-600 mb-6">Esthetic & Restorative Dental Surgeon</p>
+                    </div>
+
+                    {/* Right-side profile picture (shows on md+) */}
+                    <div className="ml-4 flex-shrink-0 hidden md:block">
+                      <div className="w-36 h-36 rounded-xl overflow-hidden bg-blue-50 border border-blue-100 shadow">
+                        <img
+                          alt="Dr. Ramsha Saeed"
+                          src="/intro-pic.jpeg"
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  </div>
                   
                   <div className="mb-6">
                     <h3 className="text-xl font-semibold mb-3 text-blue-800">Qualifications</h3>
@@ -252,11 +269,11 @@ export default function HomePage() {
                 <div className="bg-white p-8 rounded-2xl shadow-xl border-2 border-blue-200">
                   <div className="text-center mb-6">
                     <img
-                      alt="Implant Dentistry Certification"
-                      src="/WhatsApp Image 2025-10-11 at 7.25.37 PM.jpeg"
+                      alt="Professional Certifications"
+                      src="/all-certificates.jpeg"
                       className="w-full h-64 object-cover rounded-xl mb-4 shadow-lg"
                     />
-                    <h3 className="text-lg font-semibold text-blue-900">Implant Dentistry Certification</h3>
+                    <h3 className="text-lg font-semibold text-blue-900">Professional Certifications</h3>
                   </div>
                   
                   <div className="text-center">

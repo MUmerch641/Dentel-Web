@@ -62,7 +62,7 @@ export function Footer() {
           <p className="text-sm text-blue-700">Razi Road, Rahimyar Khan</p>
           <p className="text-sm text-blue-700">Pakistan</p>
           <p className="text-sm text-blue-700">0315 5775320</p>
-          <p className="text-sm text-blue-700">dentalcare_ryk</p>
+          <p className="text-sm text-blue-700">dentalcare_ryk@gmail.com</p>
         </div>
       </div>
       <div className="border-t border-blue-200">
