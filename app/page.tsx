@@ -206,7 +206,7 @@ export default function HomePage() {
                     </div>
 
                     {/* Right-side profile picture (shows on md+) */}
-                    <div className="ml-4 flex-shrink-0 hidden md:block">
+                    <div className="ml-4 flex-shrink-0 ">
                       <div className="w-36 h-36 rounded-xl overflow-hidden bg-blue-50 border border-blue-100 shadow">
                         <img
                           alt="Dr. Ramsha Saeed"
