@@ -14,6 +14,8 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
   const [showPaymentModal, setShowPaymentModal] = React.useState(false)
   const [paymentProof, setPaymentProof] = React.useState<File | null>(null)
   const [appointmentData, setAppointmentData] = React.useState<any>(null)
+  const [selectedService, setSelectedService] = React.useState("")
+  const [customService, setCustomService] = React.useState("")
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -26,6 +28,16 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
     const date = String(formData.get("date") || "").trim()
     const time = String(formData.get("time") || "").trim()
     const service = String(formData.get("service") || "").trim()
+
+    let finalService = service
+    if (service === "Others") {
+      finalService = customService.trim()
+      if (!finalService) {
+        setStatus("error")
+        setMessage("Please specify the service.")
+        return
+      }
+    }
 
     // 🧩 Validate input
     if (!name || !phone) {
@@ -58,7 +70,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
       patient_contact: phone,
       scheduled_time: `${date}T${time}:00`,
       appointment_type: appointmentType,
-      service_type: service || "General Consultation",
+      service_type: finalService || "General Consultation",
       status: appointmentType === "online" ? "Pending Payment" : "Confirmed",
     }
 
@@ -136,6 +148,8 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
       const form = document.getElementById("appointment-form") as HTMLFormElement
       if (form) form.reset()
       setAppointmentType("")
+      setSelectedService("")
+      setCustomService("")
       setPaymentProof(null)
       setShowPaymentModal(false)
 
@@ -207,8 +221,11 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
           <select
             id="service"
             name="service"
+            value={selectedService}
+            onChange={(e) => setSelectedService(e.target.value)}
             className="h-11 rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring/50"
           >
+            <option value="">Select Service</option>
             <option value="General Consultation">General Consultation</option>
             <option value="Scaling & Polishing">Scaling & Polishing</option>
             <option value="Teeth Whitening">Teeth Whitening</option>
@@ -217,7 +234,23 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
             <option value="Clear Aligners">Clear Aligners</option>
             <option value="Root Canal">Root Canal Treatment</option>
             <option value="Crowns & Bridges">Crowns & Bridges</option>
+            <option value="Others">Others</option>
           </select>
+          {selectedService === "Others" && (
+            <div className="grid gap-1.5">
+              <label htmlFor="custom-service" className="text-sm font-medium text-foreground">
+                Specify Service *
+              </label>
+              <input
+                id="custom-service"
+                value={customService}
+                onChange={(e) => setCustomService(e.target.value)}
+                required
+                className="h-11 rounded-md border border-input bg-background px-3 text-sm text-foreground outline-none focus:ring-2 focus:ring-ring/50"
+                placeholder="Enter your service"
+              />
+            </div>
+          )}
         </div>
 
         {/* Appointment Type Selection */}
