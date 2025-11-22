@@ -34,6 +34,18 @@ export default function ProfileSection() {
           {/* Profile Container */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96 md:min-h-full">
             {/* Left: Professional Image with Overlay */}
+
+    <div className="absolute bottom-10 left-3 z-20 bg-white/90 backdrop-blur-md rounded-lg p-3 shadow w-xs">
+                <h3 className="font-bold text-gray-900 text-xs mb-1.5">Dr. Ramsha Saeed</h3>
+                <div className="space-y-0.5 text-xs text-gray-700">
+                  <p className="font-semibold text-blue-700">Consultant Dental Surgeon</p>
+                  <p className="text-xs">Esthetic & Restorative Dental Surgeon</p>
+                  <p className="text-xs">MSc equivalent qualifications</p>
+                  <p className="font-semibold text-xs">9+ years experience</p>
+                </div>
+              </div>
+
+
             <div className="relative order-2 md:order-1">
               <img alt="Dr. Ramsha Saeed" src="/intro-pic.jpeg" className="w-full h-96 md:h-full object-cover" />
               {/* Dark Overlay for Text Readability */}
