@@ -35,7 +35,7 @@ export default function ProfileSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96 md:min-h-full">
             {/* Left: Professional Image with Overlay */}
 
-    <div className="absolute bottom-10 left-3 z-20 bg-white/90 backdrop-blur-md rounded-lg p-3 shadow w-xs">
+    <div className="absolute top-50 left-3 z-20 bg-white/90 backdrop-blur-md rounded-lg p-3 shadow w-xs">
                 <h3 className="font-bold text-gray-900 text-xs mb-1.5">Dr. Ramsha Saeed</h3>
                 <div className="space-y-0.5 text-xs text-gray-700">
                   <p className="font-semibold text-blue-700">Consultant Dental Surgeon</p>
@@ -46,7 +46,7 @@ export default function ProfileSection() {
               </div>
 
 
-            <div className="relative order-2 md:order-1">
+            <div className="relative order-1 md:order-1">
               <img alt="Dr. Ramsha Saeed" src="/intro-pic.jpeg" className="w-full h-96 md:h-full object-cover" />
               {/* Dark Overlay for Text Readability */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
@@ -75,7 +75,7 @@ export default function ProfileSection() {
             </div>
 
             {/* Right: Content Section */}
-            <div className="order-1 md:order-2 p-6 md:p-8 flex flex-col justify-between bg-white md:bg-gradient-to-l md:from-white md:to-gray-50">
+            <div className="order-2 md:order-2 p-6 md:p-8 flex flex-col justify-between bg-white md:bg-gradient-to-l md:from-white md:to-gray-50">
               {/* Credentials Header */}
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Dr. Ramsha Saeed</h2>
