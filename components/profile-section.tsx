@@ -34,7 +34,7 @@ export default function ProfileSection() {
 
             <div
               style={{ backgroundColor: "#2526244c" }}
-              className="absolute top-50 left-3 z-20 rounded-lg p-3 shadow w-xs"
+              className="absolute top-90 left-3 z-20 rounded-lg p-3 shadow w-xs"
             >
               <h3 className=" text-white text-3xl mb-1.5">Dr. Ramsha Saeed</h3>
               <div className="space-y-0.5 text-xl text-white">
@@ -47,16 +47,16 @@ export default function ProfileSection() {
 
 
             <div className="relative order-1 md:order-1">
-              <img alt="Dr. Ramsha Saeed" src="/intro-pic.jpeg" className="w-full h-96 md:h-full object-cover" />
+              <img alt="Dr. Ramsha Saeed" src="/intro-pic.jpeg" className="w-full h-full md:h-full object-contain" />
               {/* Dark Overlay for Text Readability */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 
-              <div className="absolute top-34   left-6 w-full text-white">
+              <div className="absolute top-70   left-6 w-full text-white">
                 <div className="flex items-center gap-6">
                   {qualifications.map((qual, idx) => (
                     <div
                       key={idx}
-                      className="w-12 h-12 rounded-lg overflow-hidden shadow-sm flex items-center justify-center"
+                      className="w-18 h-22 rounded-lg overflow-hidden shadow-sm flex items-center justify-center"
                     >
                       <img
                         src={qual.logo || "/placeholder.svg"}
