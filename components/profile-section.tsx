@@ -4,18 +4,15 @@ export default function ProfileSection() {
   const qualifications = [
     {
       name: "AAOM",
-      logo: "https://www.aaom.com/assets/site/aaom.png",
-      label: "American Academy of Oral Medicine",
+      logo: "https://pmdc.pk/ThemeContent/images/PMDC%20Logo-Green.png",
     },
     {
       name: "Eastman",
-      logo: "https://cdn.wpmeducation.com/53544f/8c75a86022/0D78-ADCC-4991-8B48-D441.jpg",
-      label: "Eastman Dental Institute",
+      logo: "https://upload.wikimedia.org/wikipedia/en/6/65/College_of_Physicians_%26_Surgeons_Pakistanlogo.png",
     },
     {
       name: "PMDC",
-      logo: "https://pmdc.pk/ThemeContent/images/PMDC%20Logo-Green.png",
-      label: "Pakistan Medical & Dental Commission",
+      logo: "https://upload.wikimedia.org/wikipedia/en/c/ce/Shaikh_Zayed_Medical_College.png",
     },
   ]
 
@@ -35,15 +32,18 @@ export default function ProfileSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96 md:min-h-full">
             {/* Left: Professional Image with Overlay */}
 
-    <div className="absolute top-50 left-3 z-20 bg-white/90 backdrop-blur-md rounded-lg p-3 shadow w-xs">
-                <h3 className="font-bold text-gray-900 text-xs mb-1.5">Dr. Ramsha Saeed</h3>
-                <div className="space-y-0.5 text-xs text-gray-700">
-                  <p className="font-semibold text-blue-700">Consultant Dental Surgeon</p>
-                  <p className="text-xs">Esthetic & Restorative Dental Surgeon</p>
-                  <p className="text-xs">MSc equivalent qualifications</p>
-                  <p className="font-semibold text-xs">9+ years experience</p>
-                </div>
+            <div
+              style={{ backgroundColor: "#2526244c" }}
+              className="absolute top-50 left-3 z-20 rounded-lg p-3 shadow w-xs"
+            >
+              <h3 className=" text-white text-3xl mb-1.5">Dr. Ramsha Saeed</h3>
+              <div className="space-y-0.5 text-xl text-white">
+                <p className="text-white">Consultant Dental Surgeon</p>
+                  <p className="text-xs text-white">B.D.S. R.D.S. </p>
+                <p className="text-xs text-white">M.C.P.S (CPSP)</p>
+                <p className=" text-xs text-white">Member College of Physicians and Surgeon Pakistan</p>
               </div>
+            </div>
 
 
             <div className="relative order-1 md:order-1">
@@ -51,27 +51,24 @@ export default function ProfileSection() {
               {/* Dark Overlay for Text Readability */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
 
-              {/* Hashtag */}
-              <div className="absolute top-6 left-6 text-white">
-                {/* <p className="text-sm font-bold opacity-90">#TeamRNR</p> */}
-                  <div className="grid grid-cols-3">
+              <div className="absolute top-34   left-6 w-full text-white">
+                <div className="flex items-center gap-6">
                   {qualifications.map((qual, idx) => (
                     <div
                       key={idx}
-                      className="flex flex-col items-center transition-colors"
+                      className="w-12 h-12 rounded-lg overflow-hidden shadow-sm flex items-center justify-center"
                     >
-                      <div className="w-12 h-12  rounded-lg   flex items-center justify-center overflow-hidden shadow-sm">
-                        <img
-                          src={qual.logo || "/placeholder.svg"}
-                          alt={qual.name}
-                          className="w-full h-full object-contain p-1"
-                        />
-                      </div>
-                      <p className="text-xs text-center text-white line-clamp-2">{qual.label}</p>
+                      <img
+                        src={qual.logo || "/placeholder.svg"}
+                        alt={qual.name}
+                        className="w-full h-full object-contain p-1"
+                      />
                     </div>
                   ))}
                 </div>
               </div>
+
+
             </div>
 
             {/* Right: Content Section */}
