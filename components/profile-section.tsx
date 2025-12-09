@@ -32,43 +32,39 @@ export default function ProfileSection() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-0 min-h-96 md:min-h-full">
             {/* Left: Professional Image with Overlay */}
 
-            <div
-              style={{ backgroundColor: "#2526244c" }}
-              className="absolute top-90 left-3 z-20 rounded-lg p-3 shadow w-xs"
-            >
-              <h3 className=" text-white text-3xl mb-1.5">Dr. Ramsha Saeed</h3>
-              <div className="space-y-0.5 text-xl text-white">
-                <p className="text-white">Consultant Dental Surgeon</p>
-                  <p className="text-xs text-white">B.D.S. R.D.S. </p>
-                <p className="text-xs text-white">M.C.P.S (CPSP)</p>
-                <p className=" text-xs text-white">Member College of Physicians and Surgeon Pakistan</p>
-              </div>
-            </div>
-
-
             <div className="relative order-1 md:order-1">
-              <img alt="Dr. Ramsha Saeed" src="/intro-pic.jpeg" className="w-full h-full md:h-full object-contain" />
+              <img alt="Dr. Ramsha Saeed" src="/intro-pic.jpeg" className="w-full h-full md:h-full object-cover" />
+              
               {/* Dark Overlay for Text Readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/70"></div>
 
-              <div className="absolute top-70   left-6 w-full text-white">
-                <div className="flex items-center gap-6">
-                  {qualifications.map((qual, idx) => (
-                    <div
-                      key={idx}
-                      className="w-18 h-22 rounded-lg overflow-hidden shadow-sm flex items-center justify-center"
-                    >
-                      <img
-                        src={qual.logo || "/placeholder.svg"}
-                        alt={qual.name}
-                        className="w-full h-full object-contain p-1"
-                      />
-                    </div>
-                  ))}
-                </div>
+              {/* Logos at Top Right */}
+              <div className="absolute top-6 right-6 flex flex-col gap-3">
+                {qualifications.map((qual, idx) => (
+                  <div
+                    key={idx}
+                    className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full shadow-lg flex items-center justify-center p-2"
+                  >
+                    <img
+                      src={qual.logo || "/placeholder.svg"}
+                      alt={qual.name}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                ))}
               </div>
 
-
+              {/* Text Overlay at Bottom */}
+              <div
+                style={{ backgroundColor: "rgba(37, 38, 36, 0.75)" }}
+                className="absolute bottom-0 left-0 right-0 z-20 backdrop-blur-sm p-6 md:p-8"
+              >
+                <h3 className="text-white text-2xl md:text-4xl font-bold mb-2">Dr. Ramsha Saeed</h3>
+                <p className="text-white text-lg md:text-xl mb-3">Consultant Dental Surgeon</p>
+                <p className="text-white text-sm md:text-base">B.D.S. R.D.S.</p>
+                <p className="text-white text-sm md:text-base">M.C.P.S (CPSP)</p>
+                <p className="text-white text-sm md:text-base">Member College of Physicians and Surgeon Pakistan</p>
+              </div>
             </div>
 
             {/* Right: Content Section */}
