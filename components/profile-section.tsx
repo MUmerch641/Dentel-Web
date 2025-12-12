@@ -33,38 +33,7 @@ export default function ProfileSection() {
             {/* Left: Professional Image with Overlay */}
 
             <div className="relative order-1 md:order-1">
-              <img alt="Dr. Ramsha Saeed" src="/intro-pic.jpeg" className="w-full h-full md:h-full object-cover" />
-              
-              {/* Dark Overlay for Text Readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/70"></div>
-
-              {/* Logos at Top Right */}
-              <div className="absolute top-6 right-6 flex flex-col gap-3">
-                {qualifications.map((qual, idx) => (
-                  <div
-                    key={idx}
-                    className="w-16 h-16 md:w-20 md:h-20 bg-white rounded-full shadow-lg flex items-center justify-center p-2"
-                  >
-                    <img
-                      src={qual.logo || "/placeholder.svg"}
-                      alt={qual.name}
-                      className="w-full h-full object-contain"
-                    />
-                  </div>
-                ))}
-              </div>
-
-              {/* Text Overlay at Bottom */}
-              <div
-                style={{ backgroundColor: "rgba(37, 38, 36, 0.75)" }}
-                className="absolute bottom-0 left-0 right-0 z-20 backdrop-blur-sm p-6 md:p-8"
-              >
-                <h3 className="text-white text-2xl md:text-4xl font-bold mb-2">Dr. Ramsha Saeed</h3>
-                <p className="text-white text-lg md:text-xl mb-3">Consultant Dental Surgeon</p>
-                <p className="text-white text-sm md:text-base">B.D.S. R.D.S.</p>
-                <p className="text-white text-sm md:text-base">M.C.P.S (CPSP)</p>
-                <p className="text-white text-sm md:text-base">Member College of Physicians and Surgeon Pakistan</p>
-              </div>
+              <img alt="Dr. Ramsha Saeed" src="/Dr-Ramsha-Saeed.png" className="w-full h-full md:h-full object-cover" />
             </div>
 
             {/* Right: Content Section */}
