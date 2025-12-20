@@ -23,7 +23,7 @@ const featuredServices: Service[] = [
     title: "TEETH WHITENING/SCALING/POLISHING",
     subtitle: "3 procedures",
     description: "Complete dental cleaning and whitening package for a brighter smile",
-    image: "https://media.istockphoto.com/id/528740755/photo/professional-teeth-cleaning.jpg?s=612x612&w=0&k=20&c=snFQ6XhQWamHVbnQD6jClnAEvy3Gaoz6-esTaactGZA=",
+    image: "/teethWhiting.jpeg",
     originalPrice: "35,000",
     discountedPrice: "25,000",
     bookingNote: "Discount only through Online booking"
@@ -40,7 +40,7 @@ const featuredServices: Service[] = [
     title: "FIXED CROWNS",
     subtitle: "Per tooth",
     description: "Durable and natural-looking dental crowns for damaged teeth",
-    image: "https://media.istockphoto.com/id/1029340434/photo/professional-teeth-cleaning-ultrasonic-teeth-cleaning-machine-delete-dental-calculus-from.jpg?s=612x612&w=0&k=20&c=XaQ2Cn6lXmUwDiOa3vbjxi8uKqw2xMQVLMIHCUzGTA0=",
+    image: "/Crowns.jpg",
     originalPrice: "9,000",
     discountedPrice: "5,000",
     bookingNote: "Per tooth - Online booking discount"
