@@ -15,7 +15,7 @@ export default function AboutPage() {
             Where Your Health and Smile Come First
           </h1>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-foreground/80">
-            Welcome to [Clinic Name], a place where advanced dental science meets a gentle, personalized touch. We are dedicated to providing you and your family with exceptional care in a modern and comfortable environment.
+            Welcome to DENTAL CARE & IMPLANT CLINIC, a place where advanced dental science meets a gentle, personalized touch. We are dedicated to providing you and your family with exceptional care in a modern and comfortable environment.
           </p>
         </header>
 

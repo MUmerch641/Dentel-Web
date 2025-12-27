@@ -13,21 +13,29 @@ interface Post {
 }
 
 // This tells Next.js to re-fetch the data every 60 seconds
-export const revalidate = 60 
+export const revalidate = 60
 
 // Make the component async
 export default async function BlogListPage() {
-  // Fetch the data from Supabase
-  const { data: posts, error } = await supabaseServer
-    .from('posts')
-    .select('uuid, title, content, created_at')
-    .order('created_at', { ascending: false });
+  let postsData: Post[] = [];
 
-  if (error) {
-    console.error('Error fetching posts:', error);
+  // Check if Supabase is configured
+  try {
+    // Fetch the data from Supabase
+    const { data: posts, error } = await supabaseServer
+      .from('posts')
+      .select('uuid, title, content, created_at')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      console.error('Error fetching posts:', error);
+    }
+
+    postsData = posts || [];
+  } catch (error) {
+    console.error('Supabase not configured:', error);
+    // Return empty array if Supabase is not configured
   }
-
-  const postsData: Post[] = posts || [];
 
   return (
     <>
@@ -50,8 +58,8 @@ export default async function BlogListPage() {
                   {post.content.length > 150 ? `${post.content.substring(0, 150)}...` : post.content}
                 </p>
                 <div className="mt-3 flex justify-between items-center">
-                  <Link 
-                    className="inline-block text-sm font-medium text-accent hover:underline" 
+                  <Link
+                    className="inline-block text-sm font-medium text-accent hover:underline"
                     href={`/blog/${post.uuid}`}
                   >
                     Read more →

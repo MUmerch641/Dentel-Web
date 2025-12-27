@@ -3,8 +3,9 @@ import { Footer } from "@/components/footer"
 import { services } from "@/data/services"
 import { notFound } from "next/navigation"
 
-export default function ServiceDetailPage({ params }: { params: { serviceName: string } }) {
-  const service = services.find((s) => s.slug === params.serviceName)
+export default async function ServiceDetailPage({ params }: { params: Promise<{ serviceName: string }> }) {
+  const { serviceName } = await params
+  const service = services.find((s) => s.slug === serviceName)
   if (!service) return notFound()
 
   return (
