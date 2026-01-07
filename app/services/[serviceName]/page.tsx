@@ -44,7 +44,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
             <h2>FAQs</h2>
             {service.details.faqs.map((f, i) => (
-              <details key={i} className="rounded-md border border-border bg-card p-4">
+              <details key={i} className="rounded-md border border-border bg-card p-4 mb-4">
                 <summary className="cursor-pointer font-medium">{f.q}</summary>
                 <p className="mt-2 text-sm text-foreground/80">{f.a}</p>
               </details>
@@ -55,7 +55,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
             <div className="aspect-[4/3] rounded-md bg-secondary">
               <img
                 alt={`${service.title} illustrative`}
-                src={`/.jpg?height=400&width=600&query=${encodeURIComponent(service.title)}`}
+                src="/dental-team-and-technology.jpg"
                 className="h-full w-full rounded-md object-cover"
               />
             </div>
@@ -64,7 +64,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               <p className="mt-2 text-sm text-foreground/80">
                 Book a consultation to discuss if {service.title.toLowerCase()} is right for you.
               </p>
-              <a href="/contact" className="mt-3 inline-block text-sm font-medium text-accent hover:underline">
+              <a href="/#appointment" className="mt-3 inline-block text-sm font-medium text-accent hover:underline">
                 Request appointment →
               </a>
             </div>
