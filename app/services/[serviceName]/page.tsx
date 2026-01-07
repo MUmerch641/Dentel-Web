@@ -3,6 +3,12 @@ import { Footer } from "@/components/footer"
 import { services } from "@/data/services"
 import { notFound } from "next/navigation"
 
+export async function generateStaticParams() {
+  return services.map((service) => ({
+    serviceName: service.slug,
+  }))
+}
+
 export default async function ServiceDetailPage({ params }: { params: Promise<{ serviceName: string }> }) {
   const { serviceName } = await params
   const service = services.find((s) => s.slug === serviceName)

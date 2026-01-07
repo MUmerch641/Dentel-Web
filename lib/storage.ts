@@ -1,25 +1,31 @@
 // lib/storage.ts
+import { supabase } from './supabase';
 
 export const uploadPaymentProof = async (file: File, appointmentId: string): Promise<string | null> => {
   try {
-    // Use API route to upload (bypasses RLS)
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('appointmentId', appointmentId);
+    // Create a unique filename
+    const fileExt = file.name.split('.').pop();
+    const fileName = `payment_${appointmentId}_${Date.now()}.${fileExt}`;
 
-    const response = await fetch('/api/upload', {
-      method: 'POST',
-      body: formData
-    });
+    // Upload directly to Supabase Storage (no API route needed)
+    const { data, error } = await supabase.storage
+      .from('payment-proofs')
+      .upload(fileName, file, {
+        cacheControl: '3600',
+        upsert: false
+      });
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error('Upload error:', errorData.error);
+    if (error) {
+      console.error('Upload error:', error);
       return null;
     }
 
-    const result = await response.json();
-    return result.publicUrl;
+    // Get the public URL
+    const { data: urlData } = supabase.storage
+      .from('payment-proofs')
+      .getPublicUrl(fileName);
+
+    return urlData.publicUrl;
   } catch (error) {
     console.error('Error uploading file:', error);
     return null;
@@ -32,16 +38,17 @@ export const deletePaymentProof = async (url: string): Promise<boolean> => {
     const fileName = url.split('/').pop();
     if (!fileName) return false;
 
-    // Use API route for deletion too (you can create this later if needed)
-    const response = await fetch('/api/delete-file', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ fileName })
-    });
+    // Delete directly from Supabase Storage
+    const { error } = await supabase.storage
+      .from('payment-proofs')
+      .remove([fileName]);
 
-    return response.ok;
+    if (error) {
+      console.error('Delete error:', error);
+      return false;
+    }
+
+    return true;
   } catch (error) {
     console.error('Error deleting file:', error);
     return false;

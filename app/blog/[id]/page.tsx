@@ -1,12 +1,8 @@
 // app/blog/[id]/page.tsx
-"use client"
-
-import { useState, useEffect } from 'react';
-import { useParams } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
 import Link from 'next/link';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
+import { notFound } from 'next/navigation';
 
 interface Post {
   uuid: string;
@@ -15,88 +11,42 @@ interface Post {
   created_at: string;
 }
 
-export default function SinglePostPage() {
-  const params = useParams();
-  const id = params.id as string;
-  const [post, setPost] = useState<Post | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+// Generate static params for all blog posts at build time
+export async function generateStaticParams() {
+  // Return a dummy param to satisfy static export requirements
+  // Since blog posts are dynamic, this will generate a placeholder page
+  return [{ id: 'placeholder' }]
+}
 
-  useEffect(() => {
-    async function fetchPost() {
-      if (!id) return;
-
-      try {
-        const { data, error } = await supabase
-          .from('posts')
-          .select('uuid, title, content, created_at')
-          .eq('uuid', id)
-          .single();
-
-        if (error) {
-          console.error('Error fetching post:', error.message);
-          setError('Post not found');
-        } else {
-          setPost(data);
-        }
-      } catch (err) {
-        console.error('Unexpected error:', err);
-        setError('Failed load post');
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchPost();
-  }, [id]);
-
-  if (loading) {
-    return (
-      <>
-        <Header />
-        <main className="container mx-auto px-4 py-8 max-w-3xl min-h-screen">
-          <div className="animate-pulse">
-            <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/4 mb-6"></div>
-            <div className="space-y-3">
-              <div className="h-4 bg-gray-200 rounded"></div>
-              <div className="h-4 bg-gray-200 rounded w-5/6"></div>
-              <div className="h-4 bg-gray-200 rounded w-4/6"></div>
-            </div>
-          </div>
-        </main>
-        <Footer />
-      </>
-    );
-  }
-
-  if (error || !post) {
-    return (
-      <>
-        <Header />
-        <main className="container mx-auto px-4 py-8 min-h-screen">
-          <p>{error || 'Post not found.'}</p>
-        </main>
-        <Footer />
-      </>
-    );
-  }
-
+export default async function SinglePostPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params
+  
+  // For static export, you cannot fetch from Supabase at runtime
+  // This page will show a fallback message
+  // To properly support blog posts with static export, you need to:
+  // 1. Fetch all posts at build time and generate static pages
+  // 2. Or use a different deployment method (not static export)
+  
   return (
     <>
       <Header />
       <main className="container mx-auto px-4 py-8 max-w-3xl min-h-screen">
-        <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
-        <p className="text-gray-600 text-sm mb-6">
-          Published on {new Date(post.created_at).toLocaleDateString()}
-        </p>
-        <div className="prose lg:prose-lg">
-          {/* You might want to render markdown here if content is markdown */}
-          <p>{post.content}</p>
+        <div className="text-center py-12">
+          <h1 className="text-3xl font-bold mb-4">Blog Post</h1>
+          <p className="text-gray-600 mb-6">
+            Blog posts require a server to load dynamically from the database.
+          </p>
+          <p className="text-sm text-gray-500 mb-4">
+            To enable blog functionality, either:
+          </p>
+          <ul className="text-left max-w-md mx-auto list-disc pl-6 space-y-2 text-sm text-gray-600">
+            <li>Remove <code className="bg-gray-100 px-1 rounded">output: 'export'</code> from next.config.mjs and deploy to Vercel/Netlify</li>
+            <li>Fetch and pre-generate all blog posts at build time</li>
+          </ul>
+          <Link href="/blog" className="mt-8 inline-block text-blue-600 hover:underline">
+            ← Back to all posts
+          </Link>
         </div>
-        <Link href="/blog" className="mt-8 inline-block text-blue-600 hover:underline">
-          ← Back to all posts
-        </Link>
       </main>
       <Footer />
     </>

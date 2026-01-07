@@ -98,20 +98,18 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
         created_at: new Date().toISOString(),
       }
 
-      // 💾 Insert into Supabase via API route
-      const apiResponse = await fetch('/api/appointments', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(appointmentRecord)
-      })
-
-      const result = await apiResponse.json()
+      // 💾 Insert directly into Supabase (no API route needed for static export)
+      const { data: insertedData, error: insertError } = await supabase
+        .from('Appointments')
+        .insert(appointmentRecord)
+        .select()
       
-      if (!apiResponse.ok) {
-        throw new Error(result.error || 'Failed to book appointment')
+      if (insertError) {
+        console.error('Supabase insert error:', insertError)
+        throw new Error(insertError.message || 'Failed to book appointment')
       }
+
+      console.log('Appointment booked successfully:', insertedData)
 
       // 📧 Send email notification via Formspree
       const emailData = {
