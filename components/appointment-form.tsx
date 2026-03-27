@@ -409,17 +409,20 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">JazzCash</h4>
-                      <p className="text-sm text-gray-600">03155775320</p>
+                      <p className="text-sm text-gray-600">03037669968</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-3 bg-white rounded-lg border">
-                    <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center">
+                  <div className="flex items-start gap-3 p-3 bg-white rounded-lg border">
+                    <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mt-1">
                       <Phone className="h-5 w-5 text-white" />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-gray-900">EasyPaisa</h4>
-                      <p className="text-sm text-gray-600">03155775320</p>
+                      <h4 className="font-semibold text-gray-900">HBL Bank Account</h4>
+                      <p className="text-sm text-gray-600">Bank Name: HBL</p>
+                      <p className="text-sm text-gray-600">Account Title: RAMSHA</p>
+                      <p className="text-sm text-gray-600">Account Number: 23347000499003</p>
+                      <p className="text-sm text-gray-600 break-all">IBAN: PK40HABB0023347000499003</p>
                     </div>
                   </div>
                 </div>
