@@ -17,6 +17,36 @@ export default function HomePage() {
 
       <main>
 
+        {/* Appointment Form */}
+        <section
+          id="appointment"
+          className="py-12 md:py-16 bg-white"
+        >
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+              <div>
+                <h2 className="text-2xl font-bold md:text-3xl text-blue-900">Request an Appointment</h2>
+                <p className="mt-3 text-blue-800">
+                  Share your details and preferred date; our team will reach out to confirm your visit.
+                </p>
+
+                <div className="mt-6 rounded-lg border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 p-5 shadow-lg">
+                  <AppointmentForm
+                    {...({ minTime: "16:00", maxTime: "20:00", timeStep: 30 } as any)}
+                  />
+                </div>
+              </div>
+              <div className="aspect-[4/3] w-full rounded-xl bg-gradient-to-br from-blue-100 to-blue-200 shadow-lg border-2 border-blue-200/50">
+                <img
+                  alt="Patient consultation"
+                  src="/hero.jpeg"
+                  className="h-full w-full rounded-xl object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+
 
 
 
@@ -504,34 +534,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Appointment Form */}
-        <section
-          id="appointment"
-          className="py-12 md:py-16">
-          <div className="mx-auto max-w-6xl px-4">
-            <div className="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
-              <div>
-                <h2 className="text-2xl font-bold md:text-3xl text-blue-900">Request an Appointment</h2>
-                <p className="mt-3 text-blue-800">
-                  Share your details and preferred date; our team will reach out to confirm your visit.
-                </p>
-
-                <div className="mt-6 rounded-lg border-2 border-blue-200 bg-gradient-to-br from-white to-blue-50 p-5 shadow-lg">
-                  <AppointmentForm
-                    {...({ minTime: "16:00", maxTime: "20:00", timeStep: 30 } as any)}
-                  />
-                </div>
-              </div>
-              <div className="aspect-[4/3] w-full rounded-xl bg-gradient-to-br from-blue-100 to-blue-200 shadow-lg border-2 border-blue-200/50">
-                <img
-                  alt="Patient consultation"
-                  src="/hero.jpeg"
-                  className="h-full w-full rounded-xl object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <Footer />
