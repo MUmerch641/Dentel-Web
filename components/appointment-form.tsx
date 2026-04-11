@@ -103,7 +103,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
         .from('Appointments')
         .insert(appointmentRecord)
         .select()
-      
+
       if (insertError) {
         console.error('Supabase insert error:', insertError)
         throw new Error(insertError.message || 'Failed to book appointment')
@@ -137,11 +137,11 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
       // ✅ Success
       setStatus("success")
       setMessage(
-        data.appointment_type === "online" 
+        data.appointment_type === "online"
           ? "Online appointment booked! Payment proof uploaded. We'll verify and confirm within 24 hours."
           : "In-clinic appointment booked successfully! We'll contact you to confirm."
       )
-      
+
       // Reset form
       const form = document.getElementById("appointment-form") as HTMLFormElement
       if (form) form.reset()
@@ -167,7 +167,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
     try {
       // Upload to Supabase Storage using helper function
       const publicUrl = await uploadPaymentProof(paymentProof, `temp_${Date.now()}`);
-      
+
       if (!publicUrl) {
         throw new Error('Failed to upload payment proof');
       }
@@ -198,7 +198,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
             placeholder="Jane Doe"
           />
         </div>
-        
+
         <div className="grid gap-1.5">
           <label htmlFor="phone" className="text-sm font-medium text-foreground">
             Phone *
@@ -257,18 +257,16 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
             Appointment Type *
           </label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div 
+            <div
               onClick={() => setAppointmentType("online")}
-              className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
-                appointmentType === "online" 
-                  ? "border-blue-600 bg-blue-50" 
+              className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${appointmentType === "online"
+                  ? "border-blue-600 bg-blue-50"
                   : "border-gray-300 hover:border-blue-400"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-3">
-                <div className={`w-4 h-4 rounded-full border-2 ${
-                  appointmentType === "online" ? "border-blue-600 bg-blue-600" : "border-gray-400"
-                }`}>
+                <div className={`w-4 h-4 rounded-full border-2 ${appointmentType === "online" ? "border-blue-600 bg-blue-600" : "border-gray-400"
+                  }`}>
                   {appointmentType === "online" && (
                     <div className="w-2 h-2 bg-white rounded-full mx-auto mt-0.5"></div>
                   )}
@@ -280,19 +278,17 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                 </div>
               </div>
             </div>
-            
-            <div 
+
+            <div
               onClick={() => setAppointmentType("clinic")}
-              className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${
-                appointmentType === "clinic" 
-                  ? "border-blue-600 bg-blue-50" 
+              className={`border-2 rounded-lg p-4 cursor-pointer transition-all ${appointmentType === "clinic"
+                  ? "border-blue-600 bg-blue-50"
                   : "border-gray-300 hover:border-blue-400"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-3">
-                <div className={`w-4 h-4 rounded-full border-2 ${
-                  appointmentType === "clinic" ? "border-blue-600 bg-blue-600" : "border-gray-400"
-                }`}>
+                <div className={`w-4 h-4 rounded-full border-2 ${appointmentType === "clinic" ? "border-blue-600 bg-blue-600" : "border-gray-400"
+                  }`}>
                   {appointmentType === "clinic" && (
                     <div className="w-2 h-2 bg-white rounded-full mx-auto mt-0.5"></div>
                   )}
@@ -306,7 +302,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
             </div>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="grid gap-1.5">
             <label htmlFor="date" className="text-sm font-medium text-foreground">
@@ -343,7 +339,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
             </select>
           </div>
         </div>
-        
+
         <div className="bg-white border-2 border-blue-300 rounded-lg p-3 mb-2 shadow-sm">
           <p className="text-xs text-blue-900 font-semibold">
             <strong>Clinic Hours:</strong> Evening 4:00 PM - 8:00 PM (Daily)
@@ -357,13 +353,13 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
             </p>
           )}
         </div>
-        
+
         <div className="pt-1">
           <Button type="submit" variant="primary" size="lg" aria-live="polite" disabled={!appointmentType}>
             {status === "loading" ? "Processing..." : `Book ${appointmentType === "online" ? "Online" : appointmentType === "clinic" ? "In-Clinic" : ""} Appointment`}
           </Button>
         </div>
-        
+
         {message && (
           <p className={status === "error" ? "text-sm text-destructive" : "text-sm text-foreground/80"} role="status">
             {message}
@@ -386,22 +382,21 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                 <X className="h-5 w-5" />
               </button>
             </div>
-            
+
             <div className="space-y-4">
               <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
                 <h3 className="font-semibold text-yellow-800 mb-2">
-                  🎉 Special Online Discount Available!
-                </h3>
+                  Special Online Discount: 10% off, now only Rs. 1,000!             </h3>
                 <p className="text-sm text-yellow-700">
                   Pay online and get exclusive discounts on your treatment.
                 </p>
               </div>
-              
+
               <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                 <h3 className="font-semibold text-blue-900 mb-3">
                   📱 Payment Methods
                 </h3>
-                
+
                 <div className="space-y-3">
                   <div className="flex items-center gap-3 p-3 bg-white rounded-lg border">
                     <div className="w-10 h-10 bg-purple-500 rounded-lg flex items-center justify-center">
@@ -412,7 +407,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                       <p className="text-sm text-gray-600">03037669968</p>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-start gap-3 p-3 bg-white rounded-lg border">
                     <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mt-1">
                       <Phone className="h-5 w-5 text-white" />
@@ -427,7 +422,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
                 <h3 className="font-semibold text-gray-900 mb-2">
                   📤 Upload Payment Screenshot
@@ -435,7 +430,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                 <p className="text-sm text-gray-600 mb-3">
                   After payment, upload screenshot as proof.
                 </p>
-                
+
                 <div className="space-y-3">
                   <input
                     type="file"
@@ -443,7 +438,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                     onChange={(e) => setPaymentProof(e.target.files?.[0] || null)}
                     className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                   />
-                  
+
                   {paymentProof && (
                     <div className="flex items-center gap-2 p-2 bg-green-50 rounded-lg">
                       <Check className="h-4 w-4 text-green-600" />
@@ -452,7 +447,7 @@ export function AppointmentForm({ compact = false }: { compact?: boolean }) {
                   )}
                 </div>
               </div>
-              
+
               <div className="flex gap-3">
                 <Button
                   onClick={() => setShowPaymentModal(false)}
